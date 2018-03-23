@@ -7,19 +7,19 @@ using namespace System::Collections;
 
 float SetMjy(ArrayList^ diap, ArrayList^ count );
 
-int PosSumbol(String^, char);//+
-int GetNumber(String^);//+
-String^ GetString(String^, int, int);//+
-bool ScheckNumber(String^);//+
+int PosSumbol(String^, char);
+int GetNumber(String^);
+String^ GetString(String^, int, int);
+bool ScheckNumber(String^);
 
 int main(array<System::String ^> ^args)
 {
-	ArrayList ^ a = gcnew ArrayList();
-	ArrayList ^ b = gcnew ArrayList();
+	ArrayList ^ a = gcnew ArrayList();//список диапозонов
+	ArrayList ^ b = gcnew ArrayList();//список количества обработаных заявок за данный промежуток
 
-	a->Add("0-5");   b->Add(12);
-	a->Add("5-10");  b->Add(15);
-	a->Add("10-15"); b->Add(20);
+	a->Add("0-5");   b->Add(12);//данный набор данных 
+	a->Add("5-10");  b->Add(15);//взят из учебника
+	a->Add("10-15"); b->Add(20);//в качестве примера
 	a->Add("15-20"); b->Add(14);
 	a->Add("20-25"); b->Add(4);
 	a->Add("25-30"); b->Add(2);
@@ -34,9 +34,9 @@ int main(array<System::String ^> ^args)
 float SetMjy(ArrayList^ diap, ArrayList^ count) {//формат массива diap "5-10", count- список чисел
 	int length = diap->Count;
 	String^ s;
-	int poz, 
-		count1,
-		count2;
+	int   poz, 
+	      count1,
+	      count2;
 	float sum_obh = 0;
 	int   sum_loc = 0;
 
