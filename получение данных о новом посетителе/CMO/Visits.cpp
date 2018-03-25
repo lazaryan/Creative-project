@@ -31,3 +31,15 @@ void Visits::SetVisitor(String^ name, Date^ date, ArrayList^ orders) {
 	TimeStart = date;
 	Orders = orders;
 }
+
+String^ Visits::GetName() {
+	return Name;
+}
+
+Date^ Visits::GetDate() {
+	return TimeStart;
+}
+
+ArrayList^ Visits::GetOrders() {
+	return Orders;
+}

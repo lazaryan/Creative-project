@@ -13,6 +13,10 @@ public:
 	void SetVisitor(String^ data);//строка в виде: Имя; время начала(формат чч:мм:сс); список заказов через запятую
 	void SetVisitor(String^ name, String^ date, String^ orders);
 	void SetVisitor(String^ name, Date^ date, ArrayList^ orders);
+	/*возвращение данных о посетителе*/
+	String^ GetName();
+	Date^ GetDate();
+	ArrayList^ GetOrders();
 private:
 	String ^ Name;//имя посетителя
 	Date^ TimeStart;//время начала
