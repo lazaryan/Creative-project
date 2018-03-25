@@ -1,0 +1,6 @@
+﻿  CMO.cpp
+  PrivateMethodsForVisitor.cpp
+  Visits.cpp
+  Создание кода...
+d:\sfedu2\cmo\cmo\privatemethodsforvisitor.cpp(78): warning C4700: использована неинициализированная локальная переменная "poz"
+  CMO.vcxproj -> D:\sfedu2\CMO\Debug\CMO.exe
