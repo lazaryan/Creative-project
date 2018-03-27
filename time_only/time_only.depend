@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1522174482 source:c:\codeblocks\time_only\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<locale>
+
