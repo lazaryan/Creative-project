@@ -9,14 +9,13 @@ using namespace System::Collections;
 **Общий класс
 **для ведения отчетности
 **подсчетов
-**(возможно обновление меню)
 */
 ref class RuList : Visits
 {
 public:
 	RuList();
-	void SetSub(String^);
-	bool InputFile();
+	void SetSub(String^);//получить данные посетителя
+	bool InputFile();//внести данные в файл
 private:
 	ArrayList ^ ls;
 };

@@ -91,3 +91,37 @@ ArrayList^ PrivateMethods::ParsingOrders(String^ s) {
 	return a;
 }
 
+String^ PrivateMethods::GetStringInCount(int count) {
+	String^ buf;
+
+	while (count) {
+		buf += (char)(count % 10);
+		count /= 10;
+	}
+
+	return GetReverseString(buf);
+}
+
+String^ PrivateMethods::GetReverseString(String^ str) {
+	String^ reverse_text;
+	int length = str->Length;
+
+	for (int i = length - 1; i >= 0; i--) {
+		reverse_text += str[i];
+	}
+
+	return reverse_text;
+}
+
+bool PrivateMethods::CheckIncludedString(String^ in, String^ out) {
+	int length = out->Length;
+
+	in = in->ToUpper();
+	out = out->ToUpper();
+
+	for (int i = 0; i < length; i++)
+		if (!(in[i] == out[i]))
+			return false;
+
+	return true;
+}
