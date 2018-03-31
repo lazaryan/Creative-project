@@ -19,7 +19,6 @@ public:
 	/*возвращение*/
 	Dictionary<String^, int>^ GetPrise();//вернуть прайс-лист
 	/*поиск*/
-	//требует отладки
 	Dictionary<String^, int>^ SearchProduct(String^ name);//поиск продукта по имени
 private:
 	Dictionary<String^, int>^ Prise;//список цен(хранится в формате (наименование, цена))

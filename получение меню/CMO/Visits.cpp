@@ -8,7 +8,15 @@ Visits::Visits()
 	TimeStart = gcnew Date();
 }
 
-void Visits::SetVisitor(String^ s) {//внесение данных о посетителе
+/*
+//////////////////////////////////////////////////////////////////
+
+				ВНЕСЕНИЕ ДАННЫХ (ВСЕ СРАЗУ)
+
+//////////////////////////////////////////////////////////////////
+*/
+
+void Visits::SetVisitor(String^ s) {
 	int poz = PosSumbol(s, ';');
 	Name = GetString(s, 0, poz);
 	
@@ -32,6 +40,53 @@ void Visits::SetVisitor(String^ name, Date^ date, ArrayList^ orders) {
 	Orders = orders;
 }
 
+/*
+///////////////////////////////////////////////////////////////////////
+
+					ПОЛУЧЕНИЕ ДАННЫХ ПО ОТДЕЛЬНОСТИ
+
+///////////////////////////////////////////////////////////////////////
+*/
+
+bool Visits::SetName(String^ name) {
+	if (name == nullptr || name->Length == 0)
+		return false;
+
+	Name = name;
+	return true;
+}
+
+void Visits::SetDate(String^ date) {
+	TimeStart = ParsingDate(date);
+}
+
+void Visits::SetDate(Date^ date) {
+	TimeStart = date;
+}
+
+bool Visits::SetListOrders(String^ orders) {
+	if (orders == nullptr || orders->Length == 0)
+		return false;
+
+	Orders = ParsingOrders(orders);
+	return true;
+}
+
+bool Visits::SetListOrders(ArrayList^ orders) {
+	if (orders->Count == 0)
+		return false;
+
+	Orders = orders;
+	return true;
+}
+
+/*
+///////////////////////////////////////////////////////////////////////
+
+					ВОЗВРАЩЕНИЕ ВСЕХ ДАННЫХ
+
+///////////////////////////////////////////////////////////////////////
+*/
 String^ Visits::GetName() {
 	return Name;
 }
