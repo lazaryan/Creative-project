@@ -1,9 +1,0 @@
-﻿  CMO.cpp
-  PriseList.cpp
-  PrivateMethods.cpp
-  RuList.cpp
-  Visits.cpp
-  Создание кода...
-d:\sfedu2\получение меню\cmo\privatemethods.cpp(60): warning C4715: PrivateMethods::PowerNegative: значение возвращается не при всех путях выполнения
-d:\sfedu2\получение меню\cmo\privatemethods.cpp(178): warning C4700: использована неинициализированная локальная переменная "poz"
-  CMO.vcxproj -> D:\sfedu2\получение меню\x64\Debug\CMO.exe
