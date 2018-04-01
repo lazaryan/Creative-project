@@ -12,8 +12,10 @@ using namespace System::Collections::Generic;
 
 int main(array<System::String ^> ^args)
 {
-	//Visits^ order = gcnew Visits();
-	//order->SetVisitor("asd;5:25:59;asd1, asd2, asd3, a");//получаем данные о посетителе
+	Visits^ order = gcnew Visits();
+	order->SetDateSystem();
+
+	order->SetVisitor("asd;5:25:59;asd1, asd2, asd3, a");//получаем данные о посетителе
 	//RuList^ vis = gcnew RuList();
 	//vis->SetSub("asd;5:25:59;asd1, asd2, asd3, a");
 	//vis->InputFile();

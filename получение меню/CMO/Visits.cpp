@@ -48,6 +48,10 @@ void Visits::SetVisitor(String^ name, Date^ date, ArrayList^ orders) {
 ///////////////////////////////////////////////////////////////////////
 */
 
+/*
+	имени
+*/
+
 bool Visits::SetName(String^ name) {
 	if (name == nullptr || name->Length == 0)
 		return false;
@@ -56,6 +60,10 @@ bool Visits::SetName(String^ name) {
 	return true;
 }
 
+/*
+	времени
+*/
+
 void Visits::SetDate(String^ date) {
 	TimeStart = ParsingDate(date);
 }
@@ -63,6 +71,18 @@ void Visits::SetDate(String^ date) {
 void Visits::SetDate(Date^ date) {
 	TimeStart = date;
 }
+
+void Visits::SetDateSystem() {
+	DateTime system_time = DateTime::Now;
+
+	TimeStart->house   = system_time.Hour;
+	TimeStart->minutes = system_time.Minute;
+	TimeStart->seconds = system_time.Second;
+}
+
+/*
+	списка заказов
+*/
 
 bool Visits::SetListOrders(String^ orders) {
 	if (orders == nullptr || orders->Length == 0)
