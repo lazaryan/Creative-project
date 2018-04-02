@@ -140,6 +140,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="PriseList.h" />
     <ClInclude Include="PrivateMethods.h" />
     <ClInclude Include="resource.h" />

@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "PriseList.h"
+
 //путь к файлу, где лежит прайс лист
 #define SOURCE_FILE_PRISE_LIST "Data/prise.txt"
 
@@ -8,17 +9,25 @@ PriseList::PriseList()
 	Prise = gcnew Dictionary<String^, int>();
 }
 
+/*
+//////////////////////////////////////////////////////////////////////////////////////////
+
+				ПОЛУЧЕНИЕ И ВНЕСЕНИЕ ДАННЫХ
+
+/////////////////////////////////////////////////////////////////////////////////////////
+*/
+
 bool PriseList::SetListPrises() {
-	OpenFileRead(SOURCE_FILE_PRISE_LIST);
+	OpenFile(SOURCE_FILE_PRISE_LIST, Reader);
 
 	String^ product;
 	int poz;
 
-	while (!File->EndOfStream) {
+	while (!File_r->EndOfStream) {
 		String^ name_product;
 		int prise_product;
 
-		product = File->ReadLine();
+		product = File_r->ReadLine();
 
 		poz = PosSumbol(product, ';');
 		name_product = GetString(product, 0, poz);
@@ -27,31 +36,12 @@ bool PriseList::SetListPrises() {
 		Prise->Add(name_product, prise_product);
 	}
 
-	CloseFileRead();
+	CloseFile(Reader);
 	return true;
-}
-
-bool PriseList::OpenFileRead(String^ path_in_file) {
-	try {
-		File = gcnew StreamReader(path_in_file);
-	}
-	catch (...) {
-		return false;
-	}
-
-	return true;
-}
-
-void PriseList::CloseFileRead() {
-	File->Close();
-}
-
-Dictionary<String^, int>^ PriseList::GetPrise() {
-	return Prise;
 }
 
 bool PriseList::SetPrise(String^ name, int prise) {
-	if (!OpenFileWrite(SOURCE_FILE_PRISE_LIST))
+	if(!OpenFile(SOURCE_FILE_PRISE_LIST, Writer))
 		return false;
 
 	String^ s = name + ";" + GetStringInCount(prise);
@@ -59,23 +49,20 @@ bool PriseList::SetPrise(String^ name, int prise) {
 	File_w->WriteLine(s);
 	Prise->Add(name, prise);
 
-	CloseFileWriter();
+	CloseFile(Writer);
 	return true;
 }
 
-bool PriseList::OpenFileWrite(String^ path_in_file) {
-	try {
-		File_w = gcnew StreamWriter(path_in_file, true);
-	}
-	catch (...) {
-		return false;
-	}
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////
 
-	return true;
-}
+				ВОЗВРАЩЕНИЕ ЗНАЧЕНИЙ
 
-void PriseList::CloseFileWriter() {
-	File_w->Close();
+////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+Dictionary<String^, int>^ PriseList::GetPrise() {
+	return Prise;
 }
 
 Dictionary<String^, int>^ PriseList::SearchProduct(String^ name) {
@@ -90,3 +77,39 @@ Dictionary<String^, int>^ PriseList::SearchProduct(String^ name) {
 	return search_list;
 }
 
+/*
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+				ОТКРЫТИЕ ФАЙЛА
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+bool PriseList::OpenFile(String^ path_in_file, TypeFile type) {
+	try {
+		if (type == Writer)
+			File_w = gcnew StreamWriter(path_in_file, true);
+		else
+			File_r = gcnew StreamReader(path_in_file);
+	}
+	catch (...) {
+		return false;
+	}
+
+	return true;
+}
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+				ЗАКРЫТИЕ ФАЙЛОВ
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+void PriseList::CloseFile(TypeFile type) {
+	if(type == Writer)
+		File_w->Close();
+	else
+		File_r->Close();
+}

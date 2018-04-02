@@ -4,7 +4,7 @@
 
 Visits::Visits()
 {
-	Orders = gcnew ArrayList();
+	Orders    = gcnew ArrayList();
 	TimeStart = gcnew Date();
 }
 

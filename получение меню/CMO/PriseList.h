@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "PrivateMethods.h"
+#include "Enums.h"
 
 using namespace System;
 using namespace System::IO;
@@ -22,12 +23,10 @@ public:
 	Dictionary<String^, int>^ SearchProduct(String^ name);//поиск продукта по имени
 private:
 	Dictionary<String^, int>^ Prise;//список цен(хранится в формате (наименование, цена))
-	StreamReader^ File;//откуда считываем
+	StreamReader^ File_r;//откуда считываем
 	StreamWriter^ File_w;//для обновления списка
 
-	bool OpenFileRead(String^ path_in_file);//открыть файл для чтения
-	bool OpenFileWrite(String^ path_in_file);//открыть файл для записи
-	void CloseFileRead();//закрыть файл для чтения
-	void CloseFileWriter();//закрыть файл для записи
+	bool OpenFile(String^ path_in_file , TypeFile type);
+	void CloseFile(TypeFile type);//закрытие файла
 };
 
