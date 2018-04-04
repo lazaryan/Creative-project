@@ -12,7 +12,7 @@ PriseList::PriseList()
 /*
 //////////////////////////////////////////////////////////////////////////////////////////
 
-				ПОЛУЧЕНИЕ И ВНЕСЕНИЕ ДАННЫХ
+				РАБОТА С ДАННЫМИ
 
 /////////////////////////////////////////////////////////////////////////////////////////
 */
@@ -53,6 +53,26 @@ bool PriseList::SetPrise(String^ name, int prise) {
 	return true;
 }
 
+bool PriseList::ChangePrise(String^ name_product, int new_prise) {
+	Prise[name_product] = new_prise;
+
+	Re_CreateFile(SOURCE_FILE_PRISE_LIST);
+	ThrowInFile();
+	CloseFile(Writer);
+
+	return true;
+}
+
+bool PriseList::RemoveProduct(String^ name_product) {
+	Prise->Remove(name_product);
+
+	Re_CreateFile(SOURCE_FILE_PRISE_LIST);
+	ThrowInFile();
+	CloseFile(Writer);
+
+	return true;
+}
+
 /*
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -66,8 +86,10 @@ Dictionary<String^, int>^ PriseList::GetPrise() {
 }
 
 Dictionary<String^, int>^ PriseList::SearchProduct(String^ name) {
-	Dictionary<String^, int>^ search_list = gcnew Dictionary<String^, int>();
-	Dictionary<String^, int>::KeyCollection ^ names_products = gcnew Dictionary<String^, int>::KeyCollection(Prise);
+	Dictionary<String^, int>^ search_list = 
+		gcnew Dictionary<String^, int>();
+	Dictionary<String^, int>::KeyCollection ^ names_products = 
+		gcnew Dictionary<String^, int>::KeyCollection(Prise);
 
 	for each(String^ s in names_products) {
 		if (CheckIncludedString(s, name))
@@ -75,6 +97,10 @@ Dictionary<String^, int>^ PriseList::SearchProduct(String^ name) {
 	}	
 
 	return search_list;
+}
+
+int PriseList::PriseProduct(String^ name_product) {
+	return Prise[name_product];
 }
 
 /*
@@ -95,8 +121,16 @@ bool PriseList::OpenFile(String^ path_in_file, TypeFile type) {
 	catch (...) {
 		return false;
 	}
-
 	return true;
+}
+
+bool PriseList::Re_CreateFile(String^ path_in_file) {
+	try {
+		File_w = gcnew StreamWriter(path_in_file);
+	}
+	catch (...) {
+		return false;
+	}
 }
 
 /*
@@ -112,4 +146,21 @@ void PriseList::CloseFile(TypeFile type) {
 		File_w->Close();
 	else
 		File_r->Close();
+}
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+				СЛУЖЕБНЫЕ МЕТОДЫ
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+void PriseList::ThrowInFile() {
+	Dictionary<String^, int>::KeyCollection ^ names = 
+		gcnew Dictionary<String^, int>::KeyCollection(Prise);
+
+	for each(String^ name in names) {
+		File_w->WriteLine("{0};{1}", name, GetStringInCount(Prise[name]));
+	}
 }

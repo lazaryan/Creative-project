@@ -1,7 +1,7 @@
-#ifndef _Enums_
+п»ї#ifndef _Enums_
 #define _Enums_
 
-//тип открываемого файла
+//С‚РёРї РѕС‚РєСЂС‹РІР°РµРјРѕРіРѕ С„Р°Р№Р»Р°
 enum TypeFile {
 	Writer,
 	Reader

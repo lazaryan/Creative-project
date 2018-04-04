@@ -56,7 +56,7 @@ double PrivateMethods::PowerNegative(int number, int deg) {
 	if (negative)
 		return  (1 / result);
 	else
-		result;
+		return result;
 }
 
 /*
