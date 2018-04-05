@@ -43,3 +43,18 @@ Date^ Visits::GetDate() {
 ArrayList^ Visits::GetOrders() {
 	return Orders;
 }
+
+
+Date^ Visits::ResidenceTime(Date^ finish) 
+{
+	Date^ difference;
+	int hour, min;
+	int kolmin;
+	kolmin = ((finish->house * 60) + finish->minutes) - ((TimeStart->house * 60) + TimeStart->minutes);
+	hour = kolmin / 60;
+	min = kolmin % 60;
+	difference->house = hour;
+	difference->minutes = min;
+	difference->seconds = 0;
+	return difference;
+}
