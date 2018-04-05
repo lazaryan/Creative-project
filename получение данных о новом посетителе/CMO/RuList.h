@@ -6,13 +6,17 @@
 using namespace System;
 using namespace System::Collections;
 
-ref class RuList : Visits
+ref class RuList 
 {
 public:
 	RuList();
-	void SetSub(String^);
+	void SetSub(String^ data);
+	void SetSub(String^ name, String^ date, String^ orders);
+	void SetSub(String^ name, Date^ date, ArrayList^ orders);
 	bool OutputFile();
+	ArrayList^ SearchVisits(String^ name);
 private:
 	ArrayList ^ ls;
+	bool Equality(String^ out, String^ in);
 };
 
