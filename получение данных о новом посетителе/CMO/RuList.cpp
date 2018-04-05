@@ -19,7 +19,7 @@ void RuList::SetSub(String^s) {
 	ls->Add(vis);
 }
 
-bool RuList::InputFile()
+bool RuList::OutputFile()
 {
 	bool chek = true;
 	StreamWriter^ fil;

@@ -11,7 +11,7 @@ ref class RuList : Visits
 public:
 	RuList();
 	void SetSub(String^);
-	bool InputFile();
+	bool OutputFile();
 private:
 	ArrayList ^ ls;
 };
