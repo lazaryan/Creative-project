@@ -22,10 +22,12 @@ int main(array<System::String ^> ^args)
 
 	PriseList^ pr = gcnew PriseList();//получение всех цен
 	pr->SetListPrises();//получить список товаров
+	//pr->SetPrise("Цезарь", 250);
+	//pr->SortingPriseList();
 	//pr->SetPrise("чай", 50);
 	//pr->ChangePrise("чай", 60);
 	//pr->RemoveProduct("чай");
-	int b = pr->PriseProduct("чай");
+	//int b = pr->PriseProduct("чай");
 	//Dictionary<String^, int>^ a = gcnew Dictionary<String^, int>();
 	//a= pr->SearchProduct(L"Кофе");//поиск всех продуктов, начинающихся на передоваемое слово
 

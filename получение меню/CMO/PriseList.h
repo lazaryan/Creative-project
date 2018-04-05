@@ -38,5 +38,8 @@ private:
 	bool Re_CreateFile(String^ path_in_file);//пересоздать файл и открыть его
 	void CloseFile(TypeFile type);//закрытие файла
 	void ThrowInFile();//заливка в файл содержимого массива Prise
+	void SortingPriseList();//сортировка по наименованиям
+
+	Dictionary<String^, int>^ GetSortingPrise(ArrayList^ list_names);//вернуть отсортированный список
 };
 

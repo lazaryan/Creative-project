@@ -114,6 +114,41 @@ String^ PrivateMethods::GetReverseString(String^ str) {
 	return reverse_text;
 }
 
+ArrayList^ PrivateMethods::SortingListString(ArrayList^ list) {
+	int	max_length = GemMaxLength(list),
+		count	   = list->Count;
+
+
+	for (int k = 0; k < max_length; k++) {//по всем символам
+		for (int i = 1; i < count; i++) {//сортировка пузырьком
+			for (int j = i; j > 0; j--) {
+				String	^ buf_1 = (String^)list[j],
+					^ buf_2 = (String^)list[j-1];
+
+				buf_1 = buf_1->ToUpper();
+				buf_2 = buf_2->ToUpper();
+
+				if (k < buf_1->Length && k < buf_2->Length) {
+					if (!k && (buf_1[0] < buf_2[0])) {
+						String^ buf = (String^)list[j];
+						list[j]	    = list[j - 1];
+						list[j - 1] = buf;
+					}
+
+					else if((buf_1[k] < buf_2[k]) &&
+						(buf_1[k - 1] == buf_2[k - 1])){ 
+						String^ buf = (String^)list[j];
+						list[j]     = list[j - 1];
+						list[j - 1] = buf;
+					}
+				}
+			}
+		}
+	}
+
+	return list;
+}
+
 /*
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -189,4 +224,22 @@ ArrayList^ PrivateMethods::ParsingOrders(String^ s) {
 	}
 
 	return a;
+}
+
+/*
+/////////////////////////////////////////////////////////////////////////////
+
+			СЛУЖЕБНЫЕ МЕТОДЫ
+
+//////////////////////////////////////////////////////////////////////////////
+*/
+
+int PrivateMethods::GemMaxLength(ArrayList^ list) {
+	int length = 0;
+
+	for each(String^ s in list)
+		if (s->Length > length)
+			length = s->Length;
+
+	return length;
 }

@@ -30,7 +30,7 @@ bool PriseList::SetListPrises() {
 		product = File_r->ReadLine();
 
 		poz = PosSumbol(product, ';');
-		name_product = GetString(product, 0, poz);
+		name_product  = GetString(product, 0, poz);
 		prise_product = GetNumber(GetString(product, poz + 1, product->Length));
 
 		Prise->Add(name_product, prise_product);
@@ -41,24 +41,18 @@ bool PriseList::SetListPrises() {
 }
 
 bool PriseList::SetPrise(String^ name, int prise) {
-	if(!OpenFile(SOURCE_FILE_PRISE_LIST, Writer))
-		return false;
-
-	String^ s = name + ";" + GetStringInCount(prise);
-
-	File_w->WriteLine(s);
 	Prise->Add(name, prise);
+	SortingPriseList();
 
-	CloseFile(Writer);
+	ThrowInFile();
+
 	return true;
 }
 
 bool PriseList::ChangePrise(String^ name_product, int new_prise) {
 	Prise[name_product] = new_prise;
 
-	Re_CreateFile(SOURCE_FILE_PRISE_LIST);
 	ThrowInFile();
-	CloseFile(Writer);
 
 	return true;
 }
@@ -66,9 +60,7 @@ bool PriseList::ChangePrise(String^ name_product, int new_prise) {
 bool PriseList::RemoveProduct(String^ name_product) {
 	Prise->Remove(name_product);
 
-	Re_CreateFile(SOURCE_FILE_PRISE_LIST);
 	ThrowInFile();
-	CloseFile(Writer);
 
 	return true;
 }
@@ -160,7 +152,33 @@ void PriseList::ThrowInFile() {
 	Dictionary<String^, int>::KeyCollection ^ names = 
 		gcnew Dictionary<String^, int>::KeyCollection(Prise);
 
+	Re_CreateFile(SOURCE_FILE_PRISE_LIST);
+
 	for each(String^ name in names) {
 		File_w->WriteLine("{0};{1}", name, GetStringInCount(Prise[name]));
 	}
+
+	CloseFile(Writer);
+}
+
+void PriseList::SortingPriseList() {
+	ArrayList^ list_name = gcnew ArrayList();
+	Dictionary<String^, int>::KeyCollection ^ names =
+		gcnew Dictionary<String^, int>::KeyCollection(Prise);
+
+	for each(String^ name in names)
+		list_name->Add(name);
+
+	list_name = SortingListString(list_name);
+	Prise     = GetSortingPrise(list_name);
+}
+
+Dictionary<String^, int>^ PriseList::GetSortingPrise(ArrayList^ list_names) {
+	Dictionary<String^, int>^ prise_new = 
+		gcnew Dictionary<String^, int>();
+
+	for each(String^ name in list_names)
+		prise_new->Add(name, Prise[name]);
+
+	return prise_new;
 }

@@ -26,6 +26,8 @@ protected:
 	String^ GetString(String^, int pos_left, int pos_right);//получение подстроки
 	String^ GetReverseString(String^ str);//получение обратной строки
 
+	ArrayList^ SortingListString(ArrayList^ list);//сортировка списка строк(пузырьковая)
+
 	/*проверки*/
 	bool CheckNumber(String^ count);//проверка, можем ли мы преобразовать строку в число
 	bool CheckIncludedString(String^ in, String^ out);//проверка, входит ли строка out в строку in
@@ -33,5 +35,7 @@ protected:
 	/*парсинг*/
 	Date^ ParsingDate(String^);//парсинг даты (( получение структуры даты) чч:мм:сс)
 	ArrayList^ ParsingOrders(String^);//получение списка всех заказов(заказ1, заказ2, заказ3 ...)
+private:
+	int GemMaxLength(ArrayList^ list);
 };
 
