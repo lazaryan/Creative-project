@@ -17,29 +17,29 @@ ref class PriseList : PrivateMethods
 public:
 	PriseList();
 	/*получение*/
-	bool SetListPrises();//получение списка продуктов
+	bool SetListPrises();						//получение списка продуктов
 	/*внесение*/
-	bool SetPrise(String^ name_product, int prise_product);
+	bool SetPrise(String^ name_product, int prise_product);		//внести новый товар
 	/*возвращение*/
-	Dictionary<String^, int>^ GetPrise();//вернуть прайс-лист
-	int PriseProduct(String^ name_product);//вернуть цену продукта
+	Dictionary<String^, int>^ GetPrise();				//вернуть прайс-лист
+	int PriseProduct(String^ name_product);				//вернуть цену продукта
 	/*поиск*/
-	Dictionary<String^, int>^ SearchProduct(String^ name);//поиск продукта по имени
+	Dictionary<String^, int>^ SearchProduct(String^ name);		//поиск продукта по имени
 	/*изменить цену продукта*/
-	bool ChangePrise(String^ name_product, int new_prise);//изменить цену данного продукта
+	bool ChangePrise(String^ name_product, int new_prise);		//изменить цену данного продукта
 	/*удалить продукт*/
-	bool RemoveProduct(String^ name_product);//удалить тавар
+	bool RemoveProduct(String^ name_product);			//удалить тавар
 private:
-	Dictionary<String^, int>^ Prise;//список цен(хранится в формате (наименование, цена))
-	StreamReader^ File_r;//откуда считываем
-	StreamWriter^ File_w;//для обновления списка
+	Dictionary<String^, int>^ Prise;				//список цен(хранится в формате (наименование, цена))
+	StreamReader^ File_r;						//откуда считываем
+	StreamWriter^ File_w;						//для обновления списка
 
-	bool OpenFile(String^ path_in_file , TypeFile type);
-	bool Re_CreateFile(String^ path_in_file);//пересоздать файл и открыть его
-	void CloseFile(TypeFile type);//закрытие файла
-	void ThrowInFile();//заливка в файл содержимого массива Prise
-	void SortingPriseList();//сортировка по наименованиям
+	bool OpenFile(String^ path_in_file , TypeFile type);		//открыть файл
+	bool Re_CreateFile(String^ path_in_file);			//пересоздать файл и открыть его
+	void CloseFile(TypeFile type);					//закрытие файла
+	void ThrowInFile();						//заливка в файл содержимого массива Prise
+	void SortingPriseList();					//сортировка по наименованиям
 
-	Dictionary<String^, int>^ GetSortingPrise(ArrayList^ list_names);//вернуть отсортированный список
+	Dictionary<String^, int>^GetSortingPrise(ArrayList^ list_names);//вернуть отсортированный список
 };
 

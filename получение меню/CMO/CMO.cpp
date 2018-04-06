@@ -14,11 +14,8 @@ int main(array<System::String ^> ^args)
 {
 	Visits^ order = gcnew Visits();
 	order->SetDateSystem();
-	Date^ time = gcnew Date();
+	Date^ time = gcnew Date(23, 23, 23);
 	Date^ time1 = gcnew Date();
-	time->house = 23;
-	time->minutes = 23;
-	time->seconds = 23;
 	time1 = order->ResidenceTime(time);
 	//order->SetVisitor("asd;5:25:59;asd1, asd2, asd3, a");//получаем данные о посетителе
 	//RuList^ vis = gcnew RuList();

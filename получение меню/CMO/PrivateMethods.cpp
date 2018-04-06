@@ -206,14 +206,14 @@ Date^ PrivateMethods::ParsingDate(String^ s) {
 	Date^ dt = gcnew Date();
 
 	int poz = PosSumbol(s, ':');
-	dt->house = GetNumber(GetString(s, 0, poz));//получаем час 
+	dt->house = GetNumber(GetString(s, 0, poz));		//получаем час 
 
 	s = GetString(s, poz + 1, s->Length);
 	poz = PosSumbol(s, ':');
-	dt->minutes = GetNumber(GetString(s, 0, poz));//получаем минуты
+	dt->minutes = GetNumber(GetString(s, 0, poz));		//получаем минуты
 
 	s = GetString(s, poz + 1, s->Length);
-	dt->seconds = GetNumber(GetString(s, 0, s->Length));//получаем секунды
+	dt->seconds = GetNumber(GetString(s, 0, s->Length));	//получаем секунды
 
 	return dt;
 }
