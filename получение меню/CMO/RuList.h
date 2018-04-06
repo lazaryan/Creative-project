@@ -14,9 +14,15 @@ ref class RuList : Visits
 {
 public:
 	RuList();
-	void SetSub(String^);//получить нового посетителя
-	bool InputFile();//внести данные в файл
+	/*внесение нового посетителя*/
+	void SetSub(String^);
+	void SetSub(String^ name, String^ date, String^ orders);
+	void SetSub(String^ name, Date^ date, ArrayList^ orders);
+	/*запись посетителя в файл*/
+	bool OutputFile();
+	/*поиск посетителя по имени*/
+	ArrayList^ SearchVisits(String^ name);
 private:
-	ArrayList ^ ls;
+	ArrayList ^ ls;//список посетителей
 };
 

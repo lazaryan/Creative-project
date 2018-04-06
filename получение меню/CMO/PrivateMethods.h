@@ -28,6 +28,9 @@ protected:
 
 	ArrayList^ SortingListString(ArrayList^ list);//сортировка списка строк(пузырьковая)
 
+	/*работа со временем*/
+	int GetMinutes(Date^ time);//получение общего числа минут
+
 	/*проверки*/
 	bool CheckNumber(String^ count);//проверка, можем ли мы преобразовать строку в число
 	bool CheckIncludedString(String^ in, String^ out);//проверка, входит ли строка out в строку in
