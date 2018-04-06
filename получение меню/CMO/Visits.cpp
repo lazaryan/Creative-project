@@ -120,8 +120,8 @@ ArrayList^ Visits::GetOrders() {
 }
 
 Date^ Visits::ResidenceTime(Date^ finish) {
-	Date^ difference = gcnew Date();
-	int kolmin;
+	Date^	difference = gcnew Date();
+	int	kolmin;
 
 	kolmin = (GetMinutes(finish) - GetMinutes(TimeStart));
 
