@@ -17,8 +17,6 @@ public:
 	String^ GetName();
 	Date^ GetDate();
 	ArrayList^ GetOrders();
-	/*Обработка данных*/
-	Date^ ResidenceTime(Date^ finish);
 private:
 	String ^ Name;//имя посетителя
 	Date^ TimeStart;//время начала

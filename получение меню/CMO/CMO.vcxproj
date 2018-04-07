@@ -140,8 +140,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PrivateMethodsForVisitor.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="PriseList.h" />
+    <ClInclude Include="PrivateMethods.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="RuList.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="Visits.h" />
@@ -152,13 +155,16 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CMO.cpp" />
-    <ClCompile Include="PrivateMethodsForVisitor.cpp" />
+    <ClCompile Include="PriseList.cpp" />
+    <ClCompile Include="PrivateMethods.cpp" />
+    <ClCompile Include="RuList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Structs.cpp" />
     <ClCompile Include="Visits.cpp" />
   </ItemGroup>
   <ItemGroup>
