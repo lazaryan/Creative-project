@@ -1,5 +1,6 @@
 ﻿  MyForm.cpp
 MyForm.cpp(9): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+  MyForm1del.cpp
   MyForm2add.cpp
   Создание кода...
-  WinForm4.vcxproj -> C:\Users\Camry\Desktop\Hatethisshit\WinForm4\Debug\WinForm4.exe
+  WinForm4.vcxproj -> C:\Users\Camry\Desktop\WinForm4\Debug\WinForm4.exe
