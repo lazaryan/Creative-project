@@ -1,4 +1,4 @@
-#include "MainForm.h"
+﻿#include "MainForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -7,6 +7,6 @@ using namespace System::Windows::Forms;
 void main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	SystemSMOversion011::MainForm form;
+	SystemforTimecoffe::MainForm form;
 	Application::Run(%form);
 }

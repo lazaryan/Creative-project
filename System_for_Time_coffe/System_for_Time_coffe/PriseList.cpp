@@ -3,7 +3,6 @@
 
 PriseList::PriseList()
 {
-	Prise = gcnew Dictionary<String^, int>();
 }
 
 /*

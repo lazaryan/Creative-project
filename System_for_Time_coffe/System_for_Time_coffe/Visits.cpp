@@ -174,3 +174,4 @@ bool Visits::OpenFile(String^ path_in_file) {
 void Visits::CloseFile() {
 	File_w->Close();
 }
+

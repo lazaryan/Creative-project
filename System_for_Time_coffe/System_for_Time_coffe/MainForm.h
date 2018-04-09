@@ -1,8 +1,8 @@
-#pragma once
+п»ї#pragma once
 #include "AddVisits.h"
 #include "RemoveVisits.h"
 
-namespace SystemSMOversion011 {
+namespace SystemforTimecoffe {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -12,7 +12,7 @@ namespace SystemSMOversion011 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для MainForm
+	/// РЎРІРѕРґРєР° РґР»СЏ MainForm
 	/// </summary>
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
@@ -21,13 +21,13 @@ namespace SystemSMOversion011 {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~MainForm()
 		{
@@ -37,19 +37,19 @@ namespace SystemSMOversion011 {
 			}
 		}
 	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Button^  button2;
 	protected:
+	private: System::Windows::Forms::Button^  button2;
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -68,8 +68,8 @@ namespace SystemSMOversion011 {
 			this->button1->Location = System::Drawing::Point(50, 50);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(120, 50);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Добавить";
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"Р”РѕР±Р°РІРёС‚СЊ";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
 			// 
@@ -81,11 +81,11 @@ namespace SystemSMOversion011 {
 				static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->ForeColor = System::Drawing::SystemColors::Window;
-			this->button2->Location = System::Drawing::Point(203, 50);
+			this->button2->Location = System::Drawing::Point(206, 50);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(120, 50);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L"Убрать";
+			this->button2->TabIndex = 2;
+			this->button2->Text = L"РЈР±СЂР°С‚СЊ";
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &MainForm::button2_Click);
 			// 
@@ -96,7 +96,6 @@ namespace SystemSMOversion011 {
 			this->ClientSize = System::Drawing::Size(784, 561);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->ForeColor = System::Drawing::SystemColors::ControlLight;
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);

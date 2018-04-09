@@ -18,8 +18,8 @@
     <ClCompile Include="MainForm.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="AddVisits.cpp">
-      <Filter>Файлы ресурсов</Filter>
+    <ClCompile Include="Structs.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Visits.cpp">
       <Filter>Исходные файлы</Filter>
@@ -27,14 +27,14 @@
     <ClCompile Include="PrivateMethods.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Structs.cpp">
+    <ClCompile Include="PriseList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RuList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="PriseList.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="AddVisits.cpp">
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="RemoveVisits.cpp">
       <Filter>Файлы ресурсов</Filter>
@@ -44,8 +44,14 @@
     <ClInclude Include="MainForm.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
-    <ClInclude Include="AddVisits.h">
-      <Filter>Файлы ресурсов</Filter>
+    <ClInclude Include="Enums.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MyConst.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Visits.h">
       <Filter>Файлы заголовков</Filter>
@@ -53,33 +59,21 @@
     <ClInclude Include="PrivateMethods.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Structs.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Enums.h">
+    <ClInclude Include="PriseList.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="RuList.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="PriseList.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="AddVisits.h">
+      <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="RemoveVisits.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
-    <ClInclude Include="MyConst.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
-      <Filter>Файлы ресурсов</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddVisits.resx">
-      <Filter>Файлы ресурсов</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RemoveVisits.resx">
       <Filter>Файлы ресурсов</Filter>
     </EmbeddedResource>
   </ItemGroup>

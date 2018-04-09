@@ -1,7 +1,7 @@
-#pragma once
+п»ї#pragma once
 #include "Visits.h"
 
-namespace SystemSMOversion011 {
+namespace SystemforTimecoffe {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -11,7 +11,7 @@ namespace SystemSMOversion011 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для AddVisits
+	/// РЎРІРѕРґРєР° РґР»СЏ AddVisits
 	/// </summary>
 	public ref class AddVisits : public System::Windows::Forms::Form
 	{
@@ -20,13 +20,13 @@ namespace SystemSMOversion011 {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~AddVisits()
 		{
@@ -42,14 +42,14 @@ namespace SystemSMOversion011 {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -62,29 +62,35 @@ namespace SystemSMOversion011 {
 			// 
 			this->label1->Font = (gcnew System::Drawing::Font(L"Lucida Sans", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(48, 20);
+			this->label1->Location = System::Drawing::Point(48, 30);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(400, 30);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Введите имя посетителя";
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"Р’РІРµРґРёС‚Рµ РёРјСЏ РїРѕСЃРµС‚РёС‚РµР»СЏ";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// textBox1
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(52, 90);
+			this->textBox1->Location = System::Drawing::Point(52, 107);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(396, 22);
-			this->textBox1->TabIndex = 1;
+			this->textBox1->TabIndex = 2;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(188, 179);
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(111)),
+				static_cast<System::Int32>(static_cast<System::Byte>(138)));
+			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)),
+				static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->ForeColor = System::Drawing::SystemColors::Window;
+			this->button1->Location = System::Drawing::Point(184, 186);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(120, 50);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Добавить";
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"Р”РѕР±Р°РІРёС‚СЊ";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &AddVisits::button1_Click);
 			// 
@@ -106,13 +112,12 @@ namespace SystemSMOversion011 {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		Visits^ add_pos = gcnew Visits();
 
-		String^ name = textBox1->Text;		//получаем имя
-		add_pos->SetName(name);			//вносим имя
-		add_pos->SetDateSystem();		//получаемм системное время
+		String^ name = textBox1->Text;		//РїРѕР»СѓС‡Р°РµРј РёРјСЏ
+		add_pos->SetName(name);			//РІРЅРѕСЃРёРј РёРјСЏ
+		add_pos->SetDateSystem();		//РїРѕР»СѓС‡Р°РµРјРј СЃРёСЃС‚РµРјРЅРѕРµ РІСЂРµРјСЏ
 
-		add_pos->RecordVisits();		//заливаем данные в файл
-		Close();				//закрываем форму
-
+		add_pos->RecordVisits();		//Р·Р°Р»РёРІР°РµРј РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р»
+		Close();				//Р·Р°РєСЂС‹РІР°РµРј С„РѕСЂРјСѓ
 	}
 	};
 }
