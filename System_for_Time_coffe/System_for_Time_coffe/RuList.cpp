@@ -1,5 +1,4 @@
 ﻿#include "RuList.h"
-#include "MyConst.h"
 
 using namespace System;
 using namespace System::Collections;
@@ -7,8 +6,8 @@ using namespace System::IO;
 
 RuList::RuList()
 {
-	ls       = gcnew ArrayList();
-	list_pos = gcnew Dictionary<String^, Date^>();
+	ls           = gcnew ArrayList();
+	list_pos     = gcnew Dictionary<String^, Date^>();
 }
 
 /*
@@ -66,6 +65,13 @@ ArrayList ^ RuList::GetNamesVisits() {
 		list->Add(name);
 
 	return list;
+}
+
+String^ RuList::GetResultPrise(String^ name) {
+	int time = GetTotalTime(name);
+	int prise = time * PriseMinutes;
+
+	return GetStringInCount(prise);
 }
 
 
@@ -132,6 +138,16 @@ bool  RuList::RemoveVisit(String^ name) {
 	return true;
 }
 
+bool RuList::SetPrisePerMinute() {
+	OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Reader);
+
+	String^ prise = File_r->ReadLine();
+	PriseMinutes = GetNumber(prise);
+
+	CloseFile(Reader);
+
+	return true;
+}
 
 /*
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -197,4 +213,13 @@ void RuList::ThrowInFile() {
 	}
 
 	CloseFile(Writer);
+}
+
+int RuList::GetTotalTime(String^ name) {
+	DateTime time_system = DateTime::Now;
+
+	Date ^time_now = gcnew Date(time_system.Hour, time_system.Minute, time_system.Second);
+	Date ^time_start = list_pos[name];
+
+	return (GetMinutes(time_now) - GetMinutes(time_start));
 }

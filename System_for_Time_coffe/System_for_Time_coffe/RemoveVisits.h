@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "ResultPrise.h"
 #include "RuList.h"
 
 namespace SystemforTimecoffe {
@@ -111,22 +112,28 @@ namespace SystemforTimecoffe {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		RuList^ remove_pos = gcnew RuList();
-		String^ name = this->comboBox1->Text;
+		String^ name = this->comboBox1->Text;			//получаем имя уходящего посетителя
 
-		remove_pos->SetLIstInFile();
-		remove_pos->RemoveVisit(name);
+		remove_pos->SetLIstInFile();				//получаем список всех посетителей
+		remove_pos->SetPrisePerMinute();			//получаем, сколько стоит одна минута
 
-		Close();
+		String^ prise = remove_pos->GetResultPrise(name);	//получаем, сколько данный человек должен заплотить
+		ResultPrise^ result = gcnew ResultPrise(prise);		//создаем экземляр с данным числом
+		result->ShowDialog();					//выводим сумму
+
+		remove_pos->RemoveVisit(name);				//удаляем посетителя
+
+		Close();						//закрываем форму
 	}
 	private: System::Void RemoveVisits_Load(System::Object^  sender, System::EventArgs^  e) {
-		ArrayList^ names = gcnew ArrayList();
-		RuList^ names_pos = gcnew RuList();
+		ArrayList^ names    = gcnew ArrayList();
+		RuList^ names_pos   = gcnew RuList();
 
-		names_pos->SetLIstInFile();
-		names = names_pos->GetNamesVisits();
+		names_pos->SetLIstInFile();				//получаем всех посетителей
+		names = names_pos->GetNamesVisits();			//получаем имена всех посетителей
 
-		this->comboBox1->Text = (String^)names[0];
-		for each(String^ name in names)
+		this->comboBox1->Text = (String^)names[0];		//для начала записываем первое имя в список
+		for each(String^ name in names)				//добавляем все имена в выподающий список
 			this->comboBox1->Items->Add(name);
 	}
 	};

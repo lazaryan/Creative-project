@@ -3,6 +3,7 @@
 #include "Enums.h"
 #include "Visits.h"
 #include "PrivateMethods.h"
+#include "MyConst.h"
 
 using namespace System;
 using namespace System::Collections;
@@ -17,24 +18,30 @@ ref class RuList : PrivateMethods
 {
 public:
 	RuList();
-	/*внесение нового посетителя*/
-	void SetSub(String^);
+
+	/*получение*/
+	void SetSub(String^);						//внесение нового посетителя
 	void SetSub(String^ name, String^ date, String^ orders);
 	void SetSub(String^ name, Date^ date, ArrayList^ orders);
-	/*запись посетителя в файл*/
+
+	bool SetLIstInFile();						//Получение списка посетителей из файла
+
+	/*возвращение*/
+	ArrayList ^ GetNamesVisits();					//возващает все имена посетителей
+	String^ GetResultPrise(String^ name);				//сколько должны заплатить за время
+
+	/*работа с файлами*/
 	bool OutputFile();						//внесение посетителя в отчет
-	/*убрать посетителя из файла*/
-	bool RemoveVisit(String^ name);
+	bool RemoveVisit(String^ name);					//убрать посетителя из файла
+	bool SetPrisePerMinute();					//получаем, сколько стоит одна минута
+
 	/*поиск посетителя по имени*/
 	ArrayList^ SearchVisits(String^ name);
-	/*Получение списка посетителей из файла*/
-	bool SetLIstInFile();
-	/*возвращение*/
-	ArrayList ^ GetNamesVisits();
 private:
-	ArrayList ^ ls;//список посетителей
+	ArrayList ^ ls;							//список посетителей (Возможно исчезнет)
 
-	Dictionary<String^, Date^>^ list_pos;
+	Dictionary<String^, Date^>^ list_pos;				//список имен и времени их прихода
+	int PriseMinutes;						//сколько стоит минута
 
 	StreamReader^ File_r;						//откуда считываем
 	StreamWriter^ File_w;						//для обновления списка
@@ -42,5 +49,7 @@ private:
 	bool OpenFile(String^ path_in_file, TypeFile type);		//открыть файл
 	bool Re_CreateFile(String^ path_in_file);			//пересоздать файл и открыть его
 	void CloseFile(TypeFile type);					//закрытие файла
-	void ThrowInFile();						//заливка в файл содержимого массива Prise
+
+	int GetTotalTime(String^ name);					//сколько минут человек провел в кафе
+	void ThrowInFile();						//заливка в файл содержимого массива list_pos
 };

@@ -138,6 +138,7 @@
     <ClCompile Include="PriseList.cpp" />
     <ClCompile Include="PrivateMethods.cpp" />
     <ClCompile Include="RemoveVisits.cpp" />
+    <ClCompile Include="ResultPrise.cpp" />
     <ClCompile Include="RuList.cpp" />
     <ClCompile Include="Structs.cpp" />
     <ClCompile Include="Visits.cpp" />
@@ -156,6 +157,9 @@
     <ClInclude Include="RemoveVisits.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ResultPrise.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="RuList.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="Visits.h" />
@@ -170,6 +174,14 @@
     <EmbeddedResource Include="RemoveVisits.resx">
       <DependentUpon>RemoveVisits.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResultPrise.resx">
+      <DependentUpon>ResultPrise.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\prise.txt" />
+    <Text Include="Data\prise_per_minute.txt" />
+    <Text Include="Data\visits.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
