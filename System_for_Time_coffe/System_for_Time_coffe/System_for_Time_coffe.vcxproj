@@ -133,18 +133,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddProductInMenu.cpp" />
     <ClCompile Include="AddVisits.cpp" />
+    <ClCompile Include="ChangePrisePerMinute.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="PriseList.cpp" />
     <ClCompile Include="PrivateMethods.cpp" />
     <ClCompile Include="RemoveVisits.cpp" />
     <ClCompile Include="ResultPrise.cpp" />
     <ClCompile Include="RuList.cpp" />
+    <ClCompile Include="Setting.cpp" />
     <ClCompile Include="Structs.cpp" />
     <ClCompile Include="Visits.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddProductInMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="AddVisits.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ChangePrisePerMinute.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Enums.h" />
@@ -161,12 +170,18 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RuList.h" />
+    <ClInclude Include="Setting.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Structs.h" />
     <ClInclude Include="Visits.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddVisits.resx">
       <DependentUpon>AddVisits.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePrisePerMinute.resx">
+      <DependentUpon>ChangePrisePerMinute.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
@@ -176,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResultPrise.resx">
       <DependentUpon>ResultPrise.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting.resx">
+      <DependentUpon>Setting.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

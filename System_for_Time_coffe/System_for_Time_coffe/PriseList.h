@@ -31,6 +31,8 @@ public:
 	bool RemoveProduct(String^ name_product);			//удалить тавар
 private:
 	Dictionary<String^, int>^ Prise;				//список цен(хранится в формате (наименование, цена))
+	int PrisePerMinute;
+
 	StreamReader^ File_r;						//откуда считываем
 	StreamWriter^ File_w;						//для обновления списка
 

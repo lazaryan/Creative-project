@@ -1,9 +1,4 @@
-п»ї#pragma once
-#include "Setting.h"
-#include "AddVisits.h"
-#include "RemoveVisits.h"
-
-#include "RuList.h"
+#pragma once
 
 namespace SystemforTimecoffe {
 
@@ -15,24 +10,24 @@ namespace SystemforTimecoffe {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// РЎРІРѕРґРєР° РґР»СЏ MainForm
+	/// Сводка для Setting
 	/// </summary>
-	public ref class MainForm : public System::Windows::Forms::Form
+	public ref class Setting : public System::Windows::Forms::Form
 	{
 	public:
-		MainForm(void)
+		Setting(void)
 		{
 			InitializeComponent();
 			//
-			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
+			//TODO: добавьте код конструктора
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
+		/// Освободить все используемые ресурсы.
 		/// </summary>
-		~MainForm()
+		~Setting()
 		{
 			if (components)
 			{
@@ -42,26 +37,26 @@ namespace SystemforTimecoffe {
 	private: System::Windows::Forms::Button^  button1;
 	protected:
 	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::ListBox^  listBox1;
 	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Button^  button4;
 
 	private:
 		/// <summary>
-		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
+		/// Обязательная переменная конструктора.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
-		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
+		/// Требуемый метод для поддержки конструктора — не изменяйте 
+		/// содержимое этого метода с помощью редактора кода.
 		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -72,13 +67,12 @@ namespace SystemforTimecoffe {
 				static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->ForeColor = System::Drawing::SystemColors::Window;
-			this->button1->Location = System::Drawing::Point(50, 50);
+			this->button1->Location = System::Drawing::Point(12, 12);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(120, 50);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Р”РѕР±Р°РІРёС‚СЊ";
+			this->button1->Size = System::Drawing::Size(201, 34);
+			this->button1->TabIndex = 2;
+			this->button1->Text = L"Изменить цену 1 минуты";
 			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -88,21 +82,12 @@ namespace SystemforTimecoffe {
 				static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->ForeColor = System::Drawing::SystemColors::Window;
-			this->button2->Location = System::Drawing::Point(206, 50);
+			this->button2->Location = System::Drawing::Point(12, 201);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(120, 50);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"РЈР±СЂР°С‚СЊ";
+			this->button2->Size = System::Drawing::Size(201, 34);
+			this->button2->TabIndex = 3;
+			this->button2->Text = L"Изменить цену товара";
 			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &MainForm::button2_Click);
-			// 
-			// listBox1
-			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->Location = System::Drawing::Point(50, 177);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(276, 355);
-			this->listBox1->TabIndex = 3;
 			// 
 			// button3
 			// 
@@ -112,79 +97,42 @@ namespace SystemforTimecoffe {
 				static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->ForeColor = System::Drawing::SystemColors::Window;
-			this->button3->Location = System::Drawing::Point(638, 50);
+			this->button3->Location = System::Drawing::Point(12, 133);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(120, 50);
+			this->button3->Size = System::Drawing::Size(201, 34);
 			this->button3->TabIndex = 4;
-			this->button3->Text = L"РќР°СЃС‚СЂРѕР№РєРё";
+			this->button3->Text = L"удалить товар";
 			this->button3->UseVisualStyleBackColor = false;
-			this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
 			// 
-			// MainForm
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(106)), static_cast<System::Int32>(static_cast<System::Byte>(111)),
+				static_cast<System::Int32>(static_cast<System::Byte>(138)));
+			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)),
+				static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->ForeColor = System::Drawing::SystemColors::Window;
+			this->button4->Location = System::Drawing::Point(12, 70);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(201, 34);
+			this->button4->TabIndex = 5;
+			this->button4->Text = L"Добавить това";
+			this->button4->UseVisualStyleBackColor = false;
+			// 
+			// Setting
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(784, 561);
+			this->ClientSize = System::Drawing::Size(284, 311);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
-			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Name = L"MainForm";
-			this->Text = L"MainForm";
-			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
+			this->Name = L"Setting";
+			this->Text = L"Setting";
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		RuList^ list = gcnew RuList();
-		ArrayList^ list_name = gcnew ArrayList();
-
-		list->SetLIstInFile();
-		list_name = list->GetNamesVisits();
-
-		for each(String^ name in list_name) {
-			this->listBox1->Items->Add(name);
-		}
-	}
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		AddVisits^ new_vis = gcnew AddVisits();
-
-		new_vis->ShowDialog();
-
-		this->listBox1->Items->Clear();
-
-		RuList^ list = gcnew RuList();
-		ArrayList^ list_name = gcnew ArrayList();
-
-		list->SetLIstInFile();
-		list_name = list->GetNamesVisits();
-
-		for each(String^ name in list_name) {
-			this->listBox1->Items->Add(name);
-		}
-	}
-	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		RemoveVisits^ remove_vis = gcnew RemoveVisits();
-
-		remove_vis->ShowDialog();
-
-		this->listBox1->Items->Clear();
-
-		RuList^ list = gcnew RuList();
-		ArrayList^ list_name = gcnew ArrayList();
-
-		list->SetLIstInFile();
-		list_name = list->GetNamesVisits();
-
-		for each(String^ name in list_name) {
-			this->listBox1->Items->Add(name);
-		}
-	}
-	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		Setting^ set = gcnew Setting();
-
-		set->ShowDialog();
-	}
-};
+	};
 }
