@@ -1,0 +1,5 @@
+﻿  AddVisits.cpp
+  MainForm.cpp
+c:\users\родион\documents\курс1_семестр2\стельмах\system_for_time_coffe\system_for_time_coffe\mainform.cpp(7): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+  Создание кода...
+  System_for_Time_coffe.vcxproj -> C:\Users\Родион\Documents\Курс1_Семестр2\Стельмах\System_for_Time_coffe\x64\Debug\System_for_Time_coffe.exe
