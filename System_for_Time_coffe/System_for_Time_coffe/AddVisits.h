@@ -109,15 +109,18 @@ namespace SystemforTimecoffe {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {	//обработка клика
 		Visits^ add_pos = gcnew Visits();
 
-		String^ name = textBox1->Text;		//получаем имя
-		add_pos->SetName(name);			//вносим имя
-		add_pos->SetDateSystem();		//получаемм системное время
+		if (textBox1->Text != nullptr && textBox1->Text->Length != 0) {			//если введено имя
+			String^ name = textBox1->Text;						//считываем имя
+			add_pos->SetName(name);							//заносим имя
+			add_pos->SetDateSystem();						//получаем системное время
 
-		add_pos->RecordVisits();		//заливаем данные в файл
-		Close();				//закрываем форму
+			add_pos->RecordVisits();						//записываем в файл
+		}
+
+		Close();				
 	}
 	};
 }

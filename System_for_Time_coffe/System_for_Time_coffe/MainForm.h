@@ -1,8 +1,10 @@
 ﻿#pragma once
 #include "Setting.h"
 #include "AddVisits.h"
-#include "RemoveVisits.h"
+//#include "RemoveVisits.h"
+#include "ResultPrise.h"
 
+#include "PrivateMethods.h"
 #include "RuList.h"
 
 namespace SystemforTimecoffe {
@@ -23,9 +25,9 @@ namespace SystemforTimecoffe {
 		MainForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+
+			ListVisits = gcnew RuList();
+			MyMethods  = gcnew PrivateMethods();
 		}
 
 	protected:
@@ -44,6 +46,8 @@ namespace SystemforTimecoffe {
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::ListBox^  listBox1;
 	private: System::Windows::Forms::Button^  button3;
+	private: RuList		^ ListVisits;
+	private: PrivateMethods ^ MyMethods;
 
 	private:
 		/// <summary>
@@ -137,15 +141,10 @@ namespace SystemforTimecoffe {
 		}
 #pragma endregion
 	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		RuList^ list = gcnew RuList();
-		ArrayList^ list_name = gcnew ArrayList();
-
-		list->SetLIstInFile();
-		list_name = list->GetNamesVisits();
-
-		for each(String^ name in list_name) {
-			this->listBox1->Items->Add(name);
-		}
+		ListVisits->DeleteOldFile();
+		ListVisits->CreateNewFile();
+		FillList();
+		ListVisits->SetPrisePerMinute();
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		AddVisits^ new_vis = gcnew AddVisits();
@@ -154,37 +153,45 @@ namespace SystemforTimecoffe {
 
 		this->listBox1->Items->Clear();
 
-		RuList^ list = gcnew RuList();
-		ArrayList^ list_name = gcnew ArrayList();
-
-		list->SetLIstInFile();
-		list_name = list->GetNamesVisits();
-
-		for each(String^ name in list_name) {
-			this->listBox1->Items->Add(name);
-		}
+		FillList();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		RemoveVisits^ remove_vis = gcnew RemoveVisits();
+		String^ s = this->listBox1->Text;
 
-		remove_vis->ShowDialog();
+		int count;
+		if (s != "") {
+			int poz = MyMethods->PosSumbol(s, ')');
+			count = MyMethods->GetNumber(MyMethods->GetString(s, 0, poz)) - 1;
+
+			String^ prise = ListVisits->GetResultPrise(count);			//сколько должен заплатить за время
+
+			ListVisits->RemoveVisit(count);						//удаляем посетителя
+
+			ResultPrise^ result = gcnew ResultPrise(prise);				//создаем экземляр с данным числом
+			result->ShowDialog();							//выводим сумму
+		}
 
 		this->listBox1->Items->Clear();
 
-		RuList^ list = gcnew RuList();
-		ArrayList^ list_name = gcnew ArrayList();
-
-		list->SetLIstInFile();
-		list_name = list->GetNamesVisits();
-
-		for each(String^ name in list_name) {
-			this->listBox1->Items->Add(name);
-		}
+		FillList();
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 		Setting^ set = gcnew Setting();
 
 		set->ShowDialog();
+	}
+
+	private: void FillList() {
+		ListVisits->SetLIstInFile();
+		ArrayList^ names = ListVisits->GetNamesVisits();
+
+		int count = 0;
+
+		for each(String^ name in names) {
+			count++;
+			String^ s = count + ") " + name;
+			this->listBox1->Items->Add(s);
+		}
 	}
 };
 }

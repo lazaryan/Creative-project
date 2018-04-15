@@ -1,4 +1,5 @@
 ﻿#include "RuList.h"
+#include "Structs.h"
 
 using namespace System;
 using namespace System::Collections;
@@ -7,7 +8,7 @@ using namespace System::IO;
 RuList::RuList()
 {
 	ls           = gcnew ArrayList();
-	list_pos     = gcnew Dictionary<String^, Date^>();
+	ListVisitors = gcnew ArrayList();
 }
 
 /*
@@ -17,24 +18,6 @@ RuList::RuList()
 
 //////////////////////////////////////////////////////////////////////
 */
-
-void RuList::SetSub(String^s) {
-	Visits^vis = gcnew Visits();
-	vis->SetVisitor(s);
-	ls->Add(vis);
-}
-
-void RuList::SetSub(String^ name, String^ date, String^ orders) {
-	Visits^vis = gcnew Visits();
-	vis->SetVisitor(name, date, orders);
-	ls->Add(vis);
-}
-
-void RuList::SetSub(String^ name, Date^ date, ArrayList^ orders) {
-	Visits^vis = gcnew Visits();
-	vis->SetVisitor(name, date, orders);
-	ls->Add(vis);
-}
 
 ArrayList^ RuList::SearchVisits(String ^ name)
 {
@@ -58,17 +41,22 @@ ArrayList^ RuList::SearchVisits(String ^ name)
 
 ArrayList ^ RuList::GetNamesVisits() {
 	ArrayList^ list = gcnew ArrayList();
-	Dictionary<String^, Date^>::KeyCollection ^ names =
-		gcnew Dictionary<String^, Date^>::KeyCollection(list_pos);
 
-	for each(String^ name in names)
-		list->Add(name);
+	for each(Visitor^ pos in ListVisitors)
+		list->Add(pos->Name);
 
 	return list;
 }
 
 String^ RuList::GetResultPrise(String^ name) {
 	int time = GetTotalTime(name);
+	int prise = time * PriseMinutes;
+
+	return GetStringInCount(prise);
+}
+
+String^ RuList::GetResultPrise(int number) {
+	int time = GetTotalTime(number);
 	int prise = time * PriseMinutes;
 
 	return GetStringInCount(prise);
@@ -113,6 +101,8 @@ bool RuList::OutputFile()
 bool RuList::SetLIstInFile() {
 	int poz;
 
+	ListVisitors->Clear();
+
 	OpenFile(SOURCE_FILE_VISITS_LIST, Reader);
 
 	while (!File_r->EndOfStream) {
@@ -123,7 +113,8 @@ bool RuList::SetLIstInFile() {
 		String  ^ name = GetString(s, 0, poz),
 			^ date = GetString(s, poz + 1, s->Length);
 
-		list_pos->Add(name, ParsingDate(date));
+		Visitor^ pos = gcnew Visitor(name, ParsingDate(date));
+		ListVisitors->Add(pos);
 	}
 
 	CloseFile(Reader);
@@ -131,7 +122,22 @@ bool RuList::SetLIstInFile() {
 }
 
 bool  RuList::RemoveVisit(String^ name) {
-	list_pos->Remove(name);
+
+	int number = -1;
+	for each(Visitor^ pos in ListVisitors) {
+		number++;
+		if (name == pos->Name)
+			break;
+	}
+	ListVisitors->Remove(ListVisitors[number]);
+
+	ThrowInFile();
+
+	return true;
+}
+
+bool RuList::RemoveVisit(int count) {
+	ListVisitors->Remove(ListVisitors[count]);
 
 	ThrowInFile();
 
@@ -145,6 +151,23 @@ bool RuList::SetPrisePerMinute() {
 	PriseMinutes = GetNumber(prise);
 
 	CloseFile(Reader);
+
+	return true;
+}
+
+bool RuList::DeleteOldFile() {
+	int	day  = DateTime::Now.DayOfYear,
+		year = DateTime::Now.Year;
+
+	String^ name_file = "vis_" + (day - 1) + "_" + year + ".txt";
+
+	File::Delete("Data/" + name_file);
+	return true;
+}
+
+bool RuList::CreateNewFile() {
+	OpenFile(SOURCE_FILE_VISITS_LIST, Writer);
+	CloseFile(Writer);
 
 	return true;
 }
@@ -203,14 +226,10 @@ void RuList::CloseFile(TypeFile type) {
 */
 
 void RuList::ThrowInFile() {
-	Dictionary<String^, Date^>::KeyCollection ^ names =
-		gcnew Dictionary<String^, Date^>::KeyCollection(list_pos);
-
 	Re_CreateFile(SOURCE_FILE_VISITS_LIST);
 
-	for each(String^ name in names) {
-		File_w->WriteLine("{0};{1}", name, GetStringInDate(list_pos[name]));
-	}
+	for each (Visitor^ pos in ListVisitors)
+		File_w->WriteLine("{0};{1}", pos->Name, GetStringInDate(pos->TimeStart));
 
 	CloseFile(Writer);
 }
@@ -219,7 +238,21 @@ int RuList::GetTotalTime(String^ name) {
 	DateTime time_system = DateTime::Now;
 
 	Date ^time_now = gcnew Date(time_system.Hour, time_system.Minute, time_system.Second);
-	Date ^time_start = list_pos[name];
+	Date ^time_start;
+
+	for each(Visitor^ pos in ListVisitors)
+		if (name == pos->Name)
+			time_start = pos->TimeStart;
+
+	return (GetMinutes(time_now) - GetMinutes(time_start));
+}
+
+int RuList::GetTotalTime(int number) {
+	DateTime time_system = DateTime::Now;
+	Date ^time_now       = gcnew Date(time_system.Hour, time_system.Minute, time_system.Second);
+
+	Visitor^ pos = (Visitor^)ListVisitors[number];
+	Date ^time_start = pos->TimeStart;
 
 	return (GetMinutes(time_now) - GetMinutes(time_start));
 }

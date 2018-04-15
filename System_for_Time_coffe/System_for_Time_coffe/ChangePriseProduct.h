@@ -152,16 +152,16 @@ namespace SystemforTimecoffe {
 		for each(String^ name in names)
 			this->comboBox1->Items->Add(name);
 	}
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	PriseList^ list = gcnew PriseList();
-	list->SetListPrises();
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		PriseList^ list = gcnew PriseList();
+		list->SetListPrises();
 
-	String^ name = this->comboBox1->Text;
-	String^ new_prise = this->textBox1->Text;
+		String^ name = this->comboBox1->Text;
+		String^ new_prise = this->textBox1->Text;
 
-	list->ChangePrise(name, new_prise);
+		list->ChangePrise(name, new_prise);
 
-	Close();
-}
+		Close();
+	}
 };
 }

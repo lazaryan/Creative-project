@@ -13,6 +13,9 @@ ref class PrivateMethods
 {
 public:
 	PrivateMethods();
+	int PosSumbol(String^ s, char symboll);			//поиск номера символа в строке
+	String^ GetString(String^, int pos_left, int pos_right);//получение подстроки
+	int GetNumber(String^);					//преобразование строки в число
 protected:
 	/*работа с числами*/
 	String ^ GetStringInCount(int count);			//преобразование числа в строку
@@ -20,10 +23,7 @@ protected:
 	double   PowerNegative(int number, int deg);		//возведение в степень(не зависит от знака)
 
 	/*работа со строками*/
-	int GetNumber(String^);					//преобразование строки в число
-	int PosSumbol(String^ s, char symboll);			//поиск номера символа в строке
 
-	String^ GetString(String^, int pos_left, int pos_right);//получение подстроки
 	String^ GetReverseString(String^ str);			//получение обратной строки
 
 	ArrayList^ SortingListString(ArrayList^ list);		//сортировка списка строк(пузырьковая)
