@@ -218,7 +218,6 @@
   <ItemGroup>
     <Text Include="Data\prise.txt" />
     <Text Include="Data\prise_per_minute.txt" />
-    <Text Include="Data\visits.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

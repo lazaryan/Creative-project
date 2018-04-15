@@ -14,11 +14,13 @@ PrivateMethods::PrivateMethods()
 
 String^ PrivateMethods::GetStringInCount(int count) {
 	String^ buf;
-
-	while (count) {
-		buf += (char)(count % 10);
-		count /= 10;
-	}
+	if (count != 0)
+		while (count) {
+			buf += (char)(count % 10);
+			count /= 10;
+		}
+	else
+		buf = "0";
 
 	return GetReverseString(buf);
 }

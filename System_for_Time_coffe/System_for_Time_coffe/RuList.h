@@ -27,20 +27,21 @@ public:
 	String^ GetResultPrise(int number);
 
 	/*работа с файлами*/
-	bool OutputFile();						//внесение посетителя в отчет
+	bool OutputFile(int number);						//внесение посетителя в отчет
+
 	bool RemoveVisit(String^ name);					//убрать посетителя из файла
 	bool RemoveVisit(int count);
+
 	bool SetPrisePerMinute();					//получаем, сколько стоит одна минута
+
 	bool DeleteOldFile();						//удаление старого буферного файла
 	bool CreateNewFile();						//создание нового буферного файла рабочего дня
 
-	/*поиск посетителя по имени*/
-	ArrayList^ SearchVisits(String^ name);
+	bool CreateReport();						//создать сегодняшний отчет
 private:
-	ArrayList ^ ls;							//список посетителей (Возможно исчезнет)
-
 	ArrayList^ ListVisitors;					//массив структур Visitor (посетитель (имя и время прихода))
 	int PriseMinutes;						//сколько стоит минута
+	int Count;							//сколько посетителей обслужили
 
 	StreamReader^ File_r;						//откуда считываем
 	StreamWriter^ File_w;						//для обновления списка

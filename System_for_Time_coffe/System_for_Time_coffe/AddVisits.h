@@ -77,6 +77,7 @@ namespace SystemforTimecoffe {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(396, 22);
 			this->textBox1->TabIndex = 2;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &AddVisits::textBox1_TextChanged);
 			// 
 			// button1
 			// 
@@ -104,6 +105,7 @@ namespace SystemforTimecoffe {
 			this->Controls->Add(this->label1);
 			this->Name = L"AddVisits";
 			this->Text = L"AddVisits";
+			this->Load += gcnew System::EventHandler(this, &AddVisits::AddVisits_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -122,5 +124,16 @@ namespace SystemforTimecoffe {
 
 		Close();				
 	}
-	};
+	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (this->textBox1->Text == nullptr ||
+			textBox1->Text->Length == 0 ||
+			textBox1->Text->Length > 50)
+			this->button1->Enabled = false;
+		else
+			this->button1->Enabled = true;
+	}
+	private: System::Void AddVisits_Load(System::Object^  sender, System::EventArgs^  e) {
+		this->button1->Enabled = false;
+	}
+};
 }

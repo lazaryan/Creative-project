@@ -141,10 +141,12 @@ namespace SystemforTimecoffe {
 		}
 #pragma endregion
 	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		ListVisits->DeleteOldFile();
-		ListVisits->CreateNewFile();
-		FillList();
-		ListVisits->SetPrisePerMinute();
+		ListVisits->DeleteOldFile();							//удаляем старый буферный файл
+		ListVisits->CreateNewFile();							//создаем новый буферный файл
+		ListVisits->CreateReport();							//создаем дневной отчет
+
+		FillList();									//загружаем в список всех посетителей
+		ListVisits->SetPrisePerMinute();						//загружаем в программу цену 1 минуты
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		AddVisits^ new_vis = gcnew AddVisits();
@@ -165,10 +167,12 @@ namespace SystemforTimecoffe {
 
 			String^ prise = ListVisits->GetResultPrise(count);			//сколько должен заплатить за время
 
-			ListVisits->RemoveVisit(count);						//удаляем посетителя
+			ListVisits->OutputFile(count);						//вносим посетителя в отчет
 
 			ResultPrise^ result = gcnew ResultPrise(prise);				//создаем экземляр с данным числом
 			result->ShowDialog();							//выводим сумму
+
+			ListVisits->RemoveVisit(count);						//удаляем посетителя
 		}
 
 		this->listBox1->Items->Clear();

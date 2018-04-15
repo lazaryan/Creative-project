@@ -133,9 +133,11 @@
     <EmbeddedResource Include="RemoveProduct.resx">
       <Filter>Файлы ресурсов</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePriseProduct.resx">
+      <Filter>Файлы ресурсов</Filter>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\visits.txt" />
     <Text Include="Data\prise.txt" />
     <Text Include="Data\prise_per_minute.txt" />
   </ItemGroup>
