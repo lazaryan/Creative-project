@@ -43,13 +43,20 @@ bool RuList::SetLIstInFile() {
 }
 
 bool RuList::SetPrisePerMinute() {
-	OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Reader);
+	if (OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Reader)) {
+		String^ prise = File_r->ReadLine();
+		PriseMinutes = GetNumber(prise);
 
-	String^ prise = File_r->ReadLine();
-	PriseMinutes = GetNumber(prise);
+		CloseFile(Reader);
+	}
+	else {
+		OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Writer);
 
-	CloseFile(Reader);
+		File_w->WriteLine(DEFAULT_PRISE);
+		PriseMinutes = DEFAULT_PRISE;
 
+		CloseFile(Writer);
+	}
 	return true;
 }
 
@@ -115,7 +122,7 @@ bool RuList::CreateReport() {
 		month = DateTime::Now.Month,
 		year = DateTime::Now.Year;
 
-	if (!OpenFile(SOURCE_FILE_REPORT, Reader)) {
+	if (!File::Exists(SOURCE_FILE_REPORT)) {
 		OpenFile(SOURCE_FILE_REPORT, Writer);
 
 		File_w->WriteLine("Отчет на {0}\\{1}\\{2}", day, month, year);
@@ -124,11 +131,14 @@ bool RuList::CreateReport() {
 
 		CloseFile(Writer);
 	}
-	else {
-		File_r->Close();
-	}
+
 
 	return true;
+}
+
+void RuList::CreateDirectory() {
+	Directory::CreateDirectory(FOLDER_SYSTEM);
+	Directory::CreateDirectory(FOLDER_REPORT);
 }
 
 bool  RuList::RemoveVisit(String^ name) {
@@ -161,7 +171,7 @@ bool RuList::DeleteOldFile() {
 
 	String^ name_file = "vis_" + (day - 1) + "_" + month + "_" + year + ".txt";
 
-	File::Delete("Data/" + name_file);
+	File::Delete(FOLDER_SYSTEM + name_file);
 	return true;
 }
 

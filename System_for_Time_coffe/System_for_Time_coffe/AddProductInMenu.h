@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "PriseList.h"
+#include "PrivateMethods.h"
 
 namespace SystemforTimecoffe {
 
@@ -19,9 +20,7 @@ namespace SystemforTimecoffe {
 		AddProductInMenu(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+			MyMethods = gcnew PrivateMethods();
 		}
 
 	protected:
@@ -42,6 +41,7 @@ namespace SystemforTimecoffe {
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Button^  button1;
+	private: PrivateMethods ^ MyMethods;
 
 	private:
 		/// <summary>
@@ -83,6 +83,7 @@ namespace SystemforTimecoffe {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(259, 26);
 			this->textBox1->TabIndex = 1;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &AddProductInMenu::textBox1_TextChanged);
 			// 
 			// label2
 			// 
@@ -102,6 +103,7 @@ namespace SystemforTimecoffe {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(100, 29);
 			this->textBox2->TabIndex = 4;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &AddProductInMenu::textBox2_TextChanged);
 			// 
 			// label3
 			// 
@@ -139,6 +141,7 @@ namespace SystemforTimecoffe {
 			this->Controls->Add(this->label1);
 			this->Name = L"AddProductInMenu";
 			this->Text = L"AddProductInMenu";
+			this->Load += gcnew System::EventHandler(this, &AddProductInMenu::AddProductInMenu_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -154,6 +157,33 @@ namespace SystemforTimecoffe {
 		add_prise->SetPrise(name_prod, prise_prod);
 
 		Close();
+	}
+	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		int length;
+
+		if (this->textBox1->Text == nullptr ||
+			(length = this->textBox1->Text->Length) == 0 ||
+			length > 30 || 
+			this->textBox2->Text == nullptr || this->textBox2->Text == "" || !MyMethods->CheckNumber(this->textBox2->Text))
+			this->button1->Enabled = false;
+		else
+			this->button1->Enabled = true;
+	}
+	private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		int length;
+		String^ s = this->textBox2->Text;
+		if (s == nullptr ||
+			(length = s->Length) == 0 ||
+			length > 4 || !MyMethods->CheckNumber(s) ||
+			this->textBox1->Text == nullptr || this->textBox1->Text == "")
+			this->button1->Enabled = false;
+		else
+			this->button1->Enabled = true;
+	}
+	private: System::Void AddProductInMenu_Load(System::Object^  sender, System::EventArgs^  e) {
+		this->button1->Enabled = false;
+		this->textBox1->Clear();
+		this->textBox2->Clear();
 	}
 };
 }

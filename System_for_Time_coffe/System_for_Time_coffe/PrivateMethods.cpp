@@ -180,7 +180,7 @@ String^ PrivateMethods::GetStringInDate(Date^ time) {
 
 bool PrivateMethods::CheckNumber(String^ s) {
 	int length;
-	if (s == nullptr || (length = s->Length == 0))
+	if (s == nullptr || ((length = s->Length) == 0))
 		return false;
 
 	for (int i = 0; i < length; i++) {

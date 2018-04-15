@@ -7,10 +7,20 @@ static int	day	= DateTime::Now.Day,
 		month	= DateTime::Now.Month,
 		year	= DateTime::Now.Year;
 
-#define SOURCE_FILE_PRISE_LIST		"Data/prise.txt"			//цены
-#define SOURCE_FILE_PRISE_ONE_MINUTE	"Data/prise_per_minute.txt"		//цена одной минуты
-#define SOURCE_FILE_REPORT		L"Отчеты/" + L"Отчет_" + day  + \
+/*пути*/
+
+#define FOLDER_SYSTEM			"Data\\"				//системная папка
+#define FOLDER_REPORT			 L"Отчеты\\"				//папка для отчетов
+
+#define SOURCE_FILE_PRISE_LIST		FOLDER_SYSTEM + "prise.txt"		//цены
+#define SOURCE_FILE_PRISE_ONE_MINUTE	FOLDER_SYSTEM + "prise_per_minute.txt"	//цена одной минуты
+
+#define SOURCE_FILE_REPORT		FOLDER_REPORT + L"Отчет_" + day  + \
 					"_" + month + "_" + year + ".txt"	//дневной отчет
-#define SOURCE_FILE_VISITS_LIST		"Data/" + "vis_" + day  + \
+#define SOURCE_FILE_VISITS_LIST		FOLDER_SYSTEM + "vis_" + day  + \
 					"_" + month + "_" + year + ".txt"	//кто в кафе (файл в имени имеет дату)
+
+/*дефолтные значения*/
+
+#define DEFAULT_PRISE			3
 #endif

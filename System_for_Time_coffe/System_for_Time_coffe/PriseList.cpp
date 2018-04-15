@@ -15,25 +15,30 @@ PriseList::PriseList()
 */
 
 bool PriseList::SetListPrises() {
-	OpenFile(SOURCE_FILE_PRISE_LIST, Reader);
+	if (OpenFile(SOURCE_FILE_PRISE_LIST, Reader)) {
 
-	String^ product;
-	int poz;
+		String^ product;
+		int poz;
 
-	while (!File_r->EndOfStream) {
-		String^ name_product;
-		int prise_product;
+		while (!File_r->EndOfStream) {
+			String^ name_product;
+			int prise_product;
 
-		product = File_r->ReadLine();
+			product = File_r->ReadLine();
 
-		poz = PosSumbol(product, ';');
-		name_product = GetString(product, 0, poz);
-		prise_product = GetNumber(GetString(product, poz + 1, product->Length));
+			poz = PosSumbol(product, ';');
+			name_product = GetString(product, 0, poz);
+			prise_product = GetNumber(GetString(product, poz + 1, product->Length));
 
-		Prise->Add(name_product, prise_product);
+			Prise->Add(name_product, prise_product);
+		}
+
+		CloseFile(Reader);
 	}
-
-	CloseFile(Reader);
+	else {
+		OpenFile(SOURCE_FILE_PRISE_LIST, Writer);
+		CloseFile(Writer);
+	}
 	return true;
 }
 
@@ -198,8 +203,8 @@ void PriseList::ThrowInFile() {
 	Dictionary<String^, int>::KeyCollection ^ names =
 		gcnew Dictionary<String^, int>::KeyCollection(Prise);
 
-	Re_CreateFile(SOURCE_FILE_PRISE_LIST);
-
+	//Re_CreateFile(SOURCE_FILE_PRISE_LIST);
+	File_w = gcnew StreamWriter(SOURCE_FILE_PRISE_LIST);
 	for each(String^ name in names) {
 		File_w->WriteLine("{0};{1}", name, GetStringInCount(Prise[name]));
 	}

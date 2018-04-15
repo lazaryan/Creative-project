@@ -141,9 +141,11 @@ namespace SystemforTimecoffe {
 		}
 #pragma endregion
 	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		ListVisits->DeleteOldFile();							//удаляем старый буферный файл
+		ListVisits->CreateDirectory();							//создаем все папки
 		ListVisits->CreateNewFile();							//создаем новый буферный файл
 		ListVisits->CreateReport();							//создаем дневной отчет
+
+		ListVisits->DeleteOldFile();							//удаляем старый буферный файл
 
 		FillList();									//загружаем в список всех посетителей
 		ListVisits->SetPrisePerMinute();						//загружаем в программу цену 1 минуты

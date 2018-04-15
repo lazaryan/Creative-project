@@ -35,8 +35,9 @@ public:
 	bool SetPrisePerMinute();					//получаем, сколько стоит одна минута
 
 	bool DeleteOldFile();						//удаление старого буферного файла
-	bool CreateNewFile();						//создание нового буферного файла рабочего дня
 
+	void CreateDirectory();						//создание необходимых папок и по нужде файлов
+	bool CreateNewFile();						//создание нового буферного файла рабочего дня
 	bool CreateReport();						//создать сегодняшний отчет
 private:
 	ArrayList^ ListVisitors;					//массив структур Visitor (посетитель (имя и время прихода))

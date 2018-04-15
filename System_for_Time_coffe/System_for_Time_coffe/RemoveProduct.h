@@ -1,5 +1,6 @@
-#pragma once
+п»ї#pragma once
 #include "PriseList.h"
+#include "PrivateMethods.h"
 
 namespace SystemforTimecoffe {
 
@@ -11,7 +12,7 @@ namespace SystemforTimecoffe {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для RemoveProduct
+	/// РЎРІРѕРґРєР° РґР»СЏ RemoveProduct
 	/// </summary>
 	public ref class RemoveProduct : public System::Windows::Forms::Form
 	{
@@ -19,14 +20,14 @@ namespace SystemforTimecoffe {
 		RemoveProduct(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+
+			list		= gcnew PriseList();
+			MyMethods	= gcnew PrivateMethods();
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~RemoveProduct()
 		{
@@ -35,36 +36,37 @@ namespace SystemforTimecoffe {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::ComboBox^  comboBox1;
+
 	protected:
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::ListBox^  listBox1;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: PriseList ^ list;
+	private: PrivateMethods ^ MyMethods;
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(12, 77);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(316, 21);
-			this->comboBox1->TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -75,28 +77,71 @@ namespace SystemforTimecoffe {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(168, 24);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"Выберите товар: ";
+			this->label1->Text = L"Р’С‹Р±РµСЂРёС‚Рµ С‚РѕРІР°СЂ: ";
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->Location = System::Drawing::Point(17, 175);
+			this->button1->Location = System::Drawing::Point(358, 404);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(243, 60);
+			this->button1->Size = System::Drawing::Size(208, 55);
 			this->button1->TabIndex = 2;
-			this->button1->Text = L"Удалить продукт";
+			this->button1->Text = L"РЈРґР°Р»РёС‚СЊ РїСЂРѕРґСѓРєС‚";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &RemoveProduct::button1_Click);
+			// 
+			// listBox1
+			// 
+			this->listBox1->FormattingEnabled = true;
+			this->listBox1->Location = System::Drawing::Point(17, 79);
+			this->listBox1->Name = L"listBox1";
+			this->listBox1->Size = System::Drawing::Size(316, 381);
+			this->listBox1->TabIndex = 3;
+			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &RemoveProduct::listBox1_SelectedIndexChanged);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(354, 79);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(132, 24);
+			this->label2->TabIndex = 4;
+			this->label2->Text = L"Р¦РµРЅР° С‚РѕРІР°СЂР°: ";
+			// 
+			// label3
+			// 
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(518, 130);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(48, 29);
+			this->label3->TabIndex = 5;
+			this->label3->Text = L"в‚Ѕ";
+			// 
+			// label4
+			// 
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(358, 130);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(128, 29);
+			this->label4->TabIndex = 6;
+			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// RemoveProduct
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(450, 247);
+			this->ClientSize = System::Drawing::Size(596, 481);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->comboBox1);
 			this->Name = L"RemoveProduct";
 			this->Text = L"RemoveProduct";
 			this->Load += gcnew System::EventHandler(this, &RemoveProduct::RemoveProduct_Load);
@@ -106,22 +151,29 @@ namespace SystemforTimecoffe {
 		}
 #pragma endregion
 	private: System::Void RemoveProduct_Load(System::Object^  sender, System::EventArgs^  e) {
-		PriseList^ list = gcnew PriseList();
+		this->button1->Enabled = false;
 
 		list->SetListPrises();
 		ArrayList^ names = list->GetNamesProducts();
 
 		for each(String^ name in names)
-			this->comboBox1->Items->Add(name);
+			this->listBox1->Items->Add(name);
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		PriseList^ list = gcnew PriseList();
-		String^ name_prod = this->comboBox1->Text;
+		String^ name_prod = this->listBox1->Text;
 
-		list->SetListPrises();
 		list->RemoveProduct(name_prod);
 
 		Close();
 	}
-	};
+	private: System::Void listBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (this->listBox1->Text != nullptr && this->listBox1->Text != "") {
+			this->button1->Enabled = true;
+			this->label4->Text = MyMethods->GetStringInCount(list->PriseProduct(this->listBox1->Text));
+		}
+		else {
+			this->button1->Enabled = false;
+		}
+	}
+};
 }
