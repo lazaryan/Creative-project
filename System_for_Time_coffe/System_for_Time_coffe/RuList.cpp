@@ -91,6 +91,15 @@ String^ RuList::GetResultPrise(int number) {
 	return GetStringInCount(prise);
 }
 
+Date^ RuList::GetTimeVisitor(int number) {
+	Visitor^ vis = (Visitor^)ListVisitors[number];
+
+	return vis->TimeStart;
+}
+
+int RuList::GetPrisePerMinute() {
+	return PriseMinutes;
+}
 
 /*
 /////////////////////////////////////////////////////////////////////////////////////

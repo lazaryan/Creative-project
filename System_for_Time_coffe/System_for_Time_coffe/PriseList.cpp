@@ -15,6 +15,8 @@ PriseList::PriseList()
 */
 
 bool PriseList::SetListPrises() {
+	Prise->Clear();
+
 	if (OpenFile(SOURCE_FILE_PRISE_LIST, Reader)) {
 
 		String^ product;
@@ -105,6 +107,16 @@ void PriseList::ChangePriceMin(String^ price)
 	CloseFile(Writer);
 }
 
+void PriseList::SetPrisePerMinute() {
+
+	OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Reader);
+
+	String^ prise = File_r->ReadLine();
+	PrisePerMinute = GetNumber(prise);
+
+	CloseFile(Reader);
+}
+
 /*
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -144,6 +156,13 @@ ArrayList^ PriseList::GetNamesProducts() {
 		list->Add(name);
 
 	return list;
+}
+
+String^ PriseList::GetPrisePerMinute() {
+	if (!PrisePerMinute)
+		SetPrisePerMinute();
+
+	return GetStringInCount(PrisePerMinute);
 }
 
 /*

@@ -25,9 +25,11 @@ public:
 	ArrayList ^ GetNamesVisits();					//возващает все имена посетителей
 	String^ GetResultPrise(String^ name);				//сколько должны заплатить за время
 	String^ GetResultPrise(int number);
+	Date^ GetTimeVisitor(int number);				//получить время прихода посетителя
+	int GetPrisePerMinute();					//возвращает цену 1 минуты
 
 	/*работа с файлами*/
-	bool OutputFile(int number);						//внесение посетителя в отчет
+	bool OutputFile(int number);					//внесение посетителя в отчет
 
 	bool RemoveVisit(String^ name);					//убрать посетителя из файла
 	bool RemoveVisit(int count);
