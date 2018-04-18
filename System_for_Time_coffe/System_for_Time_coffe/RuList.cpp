@@ -92,9 +92,13 @@ String^ RuList::GetResultPrise(int number) {
 }
 
 Date^ RuList::GetTimeVisitor(int number) {
-	Visitor^ vis = (Visitor^)ListVisitors[number];
+	if (!(number < 0)) {
+		Visitor^ vis = (Visitor^)ListVisitors[number];
 
-	return vis->TimeStart;
+		return vis->TimeStart;
+	}
+	Date^ date = gcnew Date(00, 00, 00);
+	return date;
 }
 
 int RuList::GetPrisePerMinute() {

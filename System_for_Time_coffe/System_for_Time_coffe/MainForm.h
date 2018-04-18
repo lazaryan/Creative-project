@@ -283,7 +283,7 @@ namespace SystemforTimecoffe {
 		new_vis->ShowDialog();
 
 		this->listBox1->Items->Clear();
-
+		this->label3->Text = "00:00:00";
 		FillList();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
