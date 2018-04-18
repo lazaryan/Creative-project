@@ -19,29 +19,32 @@ ref class RuList : PrivateMethods
 public:
 	RuList();
 
-	/*получение*/
-	void SetSub(String^);						//внесение нового посетителя
-	void SetSub(String^ name, String^ date, String^ orders);
-	void SetSub(String^ name, Date^ date, ArrayList^ orders);
-
 	bool SetLIstInFile();						//Получение списка посетителей из файла
 
 	/*возвращение*/
 	ArrayList ^ GetNamesVisits();					//возващает все имена посетителей
 	String^ GetResultPrise(String^ name);				//сколько должны заплатить за время
+	String^ GetResultPrise(int number);
+	Date^ GetTimeVisitor(int number);				//получить время прихода посетителя
+	int GetPrisePerMinute();					//возвращает цену 1 минуты
 
 	/*работа с файлами*/
-	bool OutputFile();						//внесение посетителя в отчет
+	bool OutputFile(int number);					//внесение посетителя в отчет
+
 	bool RemoveVisit(String^ name);					//убрать посетителя из файла
+	bool RemoveVisit(int count);
+
 	bool SetPrisePerMinute();					//получаем, сколько стоит одна минута
 
-	/*поиск посетителя по имени*/
-	ArrayList^ SearchVisits(String^ name);
-private:
-	ArrayList ^ ls;							//список посетителей (Возможно исчезнет)
+	bool DeleteOldFile();						//удаление старого буферного файла
 
-	Dictionary<String^, Date^>^ list_pos;				//список имен и времени их прихода
+	void CreateDirectory();						//создание необходимых папок и по нужде файлов
+	bool CreateNewFile();						//создание нового буферного файла рабочего дня
+	bool CreateReport();						//создать сегодняшний отчет
+private:
+	ArrayList^ ListVisitors;					//массив структур Visitor (посетитель (имя и время прихода))
 	int PriseMinutes;						//сколько стоит минута
+	int Count;							//сколько посетителей обслужили
 
 	StreamReader^ File_r;						//откуда считываем
 	StreamWriter^ File_w;						//для обновления списка
@@ -51,5 +54,6 @@ private:
 	void CloseFile(TypeFile type);					//закрытие файла
 
 	int GetTotalTime(String^ name);					//сколько минут человек провел в кафе
+	int GetTotalTime(int number);
 	void ThrowInFile();						//заливка в файл содержимого массива list_pos
 };

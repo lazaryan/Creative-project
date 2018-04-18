@@ -3,6 +3,7 @@
 
 PriseList::PriseList()
 {
+	Prise = gcnew Dictionary<String^, int>();
 }
 
 /*
@@ -14,25 +15,32 @@ PriseList::PriseList()
 */
 
 bool PriseList::SetListPrises() {
-	OpenFile(SOURCE_FILE_PRISE_LIST, Reader);
+	Prise->Clear();
 
-	String^ product;
-	int poz;
+	if (OpenFile(SOURCE_FILE_PRISE_LIST, Reader)) {
 
-	while (!File_r->EndOfStream) {
-		String^ name_product;
-		int prise_product;
+		String^ product;
+		int poz;
 
-		product = File_r->ReadLine();
+		while (!File_r->EndOfStream) {
+			String^ name_product;
+			int prise_product;
 
-		poz = PosSumbol(product, ';');
-		name_product = GetString(product, 0, poz);
-		prise_product = GetNumber(GetString(product, poz + 1, product->Length));
+			product = File_r->ReadLine();
 
-		Prise->Add(name_product, prise_product);
+			poz = PosSumbol(product, ';');
+			name_product = GetString(product, 0, poz);
+			prise_product = GetNumber(GetString(product, poz + 1, product->Length));
+
+			Prise->Add(name_product, prise_product);
+		}
+
+		CloseFile(Reader);
 	}
-
-	CloseFile(Reader);
+	else {
+		OpenFile(SOURCE_FILE_PRISE_LIST, Writer);
+		CloseFile(Writer);
+	}
 	return true;
 }
 
@@ -45,10 +53,35 @@ bool PriseList::SetPrise(String^ name, int prise) {
 	return true;
 }
 
+bool PriseList::SetPrise(String^ name_product, String^ prise_product) {
+	if (!CheckNumber(prise_product))
+		return false;
+
+	int prise = GetNumber(prise_product);
+	Prise->Add(name_product, prise);
+	SortingPriseList();
+
+	ThrowInFile();
+
+	return true;
+}
+
+
 bool PriseList::ChangePrise(String^ name_product, int new_prise) {
 	Prise[name_product] = new_prise;
 
 	ThrowInFile();
+
+	return true;
+}
+
+bool  PriseList::ChangePrise(String^ name_product, String^ new_prise) {
+	if (!CheckNumber(new_prise))
+		return false;
+
+	int prise = GetNumber(new_prise);
+
+	ChangePrise(name_product, prise);
 
 	return true;
 }
@@ -59,6 +92,29 @@ bool PriseList::RemoveProduct(String^ name_product) {
 	ThrowInFile();
 
 	return true;
+}
+
+void PriseList::ChangePriceMin(String^ price)
+{
+	OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Reader);
+	String^ old_price = File_r->ReadLine();
+	CloseFile(Reader);
+
+	Re_CreateFile(SOURCE_FILE_PRISE_ONE_MINUTE);
+
+	(CheckNumber(price)) ? File_w->Write(price) : File_w->Write(old_price);
+
+	CloseFile(Writer);
+}
+
+void PriseList::SetPrisePerMinute() {
+
+	OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Reader);
+
+	String^ prise = File_r->ReadLine();
+	PrisePerMinute = GetNumber(prise);
+
+	CloseFile(Reader);
 }
 
 /*
@@ -89,6 +145,24 @@ Dictionary<String^, int>^ PriseList::SearchProduct(String^ name) {
 
 int PriseList::PriseProduct(String^ name_product) {
 	return Prise[name_product];
+}
+
+ArrayList^ PriseList::GetNamesProducts() {
+	ArrayList^ list = gcnew ArrayList();
+	Dictionary<String^, int>::KeyCollection ^ names =
+		gcnew Dictionary<String^, int>::KeyCollection(Prise);
+
+	for each(String^ name in names)
+		list->Add(name);
+
+	return list;
+}
+
+String^ PriseList::GetPrisePerMinute() {
+	if (!PrisePerMinute)
+		SetPrisePerMinute();
+
+	return GetStringInCount(PrisePerMinute);
 }
 
 /*
@@ -144,30 +218,12 @@ void PriseList::CloseFile(TypeFile type) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 */
 
-void PriseList::ChangePriceMin(String^ price) 
-{
-	OpenFile(SOURCE_FILE_PRISE_ONE_MINUTE, Reader);
-	String^ old_price = File_r->ReadLine();
-	CloseFile(Reader);
-	Re_CreateFile(SOURCE_FILE_PRISE_ONE_MINUTE);
-	bool chek = true;
-	for (int i = 0; i < price->Length; i++) 
-	{
-		if (!(price[i] >= '0' && price[i] <= '9')) {
-			chek = false;
-		}
-	}
-	if (chek) File_w->Write(price);
-	else File_w->Write(old_price);
-	CloseFile(Writer);
-}
-
 void PriseList::ThrowInFile() {
 	Dictionary<String^, int>::KeyCollection ^ names =
 		gcnew Dictionary<String^, int>::KeyCollection(Prise);
 
-	Re_CreateFile(SOURCE_FILE_PRISE_LIST);
-
+	//Re_CreateFile(SOURCE_FILE_PRISE_LIST);
+	File_w = gcnew StreamWriter(SOURCE_FILE_PRISE_LIST);
 	for each(String^ name in names) {
 		File_w->WriteLine("{0};{1}", name, GetStringInCount(Prise[name]));
 	}

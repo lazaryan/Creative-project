@@ -138,9 +138,11 @@
     <ClCompile Include="AddProductInMenu.cpp" />
     <ClCompile Include="AddVisits.cpp" />
     <ClCompile Include="ChangePrisePerMinute.cpp" />
+    <ClCompile Include="ChangePriseProduct.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="PriseList.cpp" />
     <ClCompile Include="PrivateMethods.cpp" />
+    <ClCompile Include="RemoveProduct.cpp" />
     <ClCompile Include="RemoveVisits.cpp" />
     <ClCompile Include="ResultPrise.cpp" />
     <ClCompile Include="RuList.cpp" />
@@ -158,6 +160,9 @@
     <ClInclude Include="ChangePrisePerMinute.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ChangePriseProduct.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Enums.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
@@ -165,6 +170,9 @@
     <ClInclude Include="MyConst.h" />
     <ClInclude Include="PriseList.h" />
     <ClInclude Include="PrivateMethods.h" />
+    <ClInclude Include="RemoveProduct.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="RemoveVisits.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -179,14 +187,23 @@
     <ClInclude Include="Visits.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddProductInMenu.resx">
+      <DependentUpon>AddProductInMenu.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddVisits.resx">
       <DependentUpon>AddVisits.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePrisePerMinute.resx">
       <DependentUpon>ChangePrisePerMinute.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePriseProduct.resx">
+      <DependentUpon>ChangePriseProduct.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoveProduct.resx">
+      <DependentUpon>RemoveProduct.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RemoveVisits.resx">
       <DependentUpon>RemoveVisits.h</DependentUpon>
@@ -201,7 +218,6 @@
   <ItemGroup>
     <Text Include="Data\prise.txt" />
     <Text Include="Data\prise_per_minute.txt" />
-    <Text Include="Data\visits.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

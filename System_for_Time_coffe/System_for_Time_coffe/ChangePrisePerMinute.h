@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "PriseList.h"
+#include "PrivateMethods.h"
 
 namespace SystemforTimecoffe {
 
@@ -19,9 +20,9 @@ namespace SystemforTimecoffe {
 		ChangePrisePerMinute(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+
+			MyMethods = gcnew PrivateMethods();
+			change_per_m = gcnew PriseList();
 		}
 
 	protected:
@@ -40,6 +41,11 @@ namespace SystemforTimecoffe {
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Button^  button1;
+	private: PrivateMethods ^ MyMethods;
+	private: PriseList ^ change_per_m;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
 
 	private:
 		/// <summary>
@@ -58,13 +64,16 @@ namespace SystemforTimecoffe {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(12, 64);
+			this->label1->Location = System::Drawing::Point(12, 125);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(264, 30);
 			this->label1->TabIndex = 0;
@@ -75,16 +84,17 @@ namespace SystemforTimecoffe {
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(293, 65);
+			this->textBox1->Location = System::Drawing::Point(295, 125);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 29);
 			this->textBox1->TabIndex = 1;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &ChangePrisePerMinute::textBox1_TextChanged);
 			// 
 			// label2
 			// 
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(418, 65);
+			this->label2->Location = System::Drawing::Point(415, 124);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(48, 29);
 			this->label2->TabIndex = 2;
@@ -98,7 +108,7 @@ namespace SystemforTimecoffe {
 				static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(66)));
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->ForeColor = System::Drawing::SystemColors::Window;
-			this->button1->Location = System::Drawing::Point(16, 145);
+			this->button1->Location = System::Drawing::Point(12, 187);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(188, 47);
 			this->button1->TabIndex = 3;
@@ -106,11 +116,45 @@ namespace SystemforTimecoffe {
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &ChangePrisePerMinute::button1_Click);
 			// 
+			// label3
+			// 
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(12, 45);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(264, 30);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"Старая цена:";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label4
+			// 
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(415, 44);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(48, 29);
+			this->label4->TabIndex = 5;
+			this->label4->Text = L"₽";
+			// 
+			// label5
+			// 
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(295, 43);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(100, 30);
+			this->label5->TabIndex = 6;
+			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
 			// ChangePrisePerMinute
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(489, 213);
+			this->ClientSize = System::Drawing::Size(489, 257);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBox1);
@@ -124,12 +168,23 @@ namespace SystemforTimecoffe {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		PriseList^ change_per_m = gcnew PriseList();
 		String^ price = textBox1->Text;
 		change_per_m->ChangePriceMin(price);
 		Close();
 	}
-private: System::Void ChangePrisePerMinute_Load(System::Object^  sender, System::EventArgs^  e) {
-}
+	private: System::Void ChangePrisePerMinute_Load(System::Object^  sender, System::EventArgs^  e) {
+		this->button1->Enabled = false;
+		this->label5->Text = change_per_m->GetPrisePerMinute();
+	}
+	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		int length;
+		String^ s = this->textBox1->Text;
+		if(s == nullptr || 
+			(length = s->Length) == 0 ||
+			length > 4 || !MyMethods->CheckNumber(s))
+			this->button1->Enabled = false;
+		else
+			this->button1->Enabled = true;
+	}
 };
 }

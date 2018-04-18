@@ -18,16 +18,21 @@ public:
 	PriseList();
 	/*получение*/
 	bool SetListPrises();						//получение списка продуктов
+	void SetPrisePerMinute();					//получить цену минуты
 	/*внесение*/
 	bool SetPrise(String^ name_product, int prise_product);		//внести новый товар
+	bool SetPrise(String^ name_product, String^ prise_product);
 	/*возвращение*/
 	Dictionary<String^, int>^ GetPrise();				//вернуть прайс-лист
 	int PriseProduct(String^ name_product);				//вернуть цену продукта
+	ArrayList^ GetNamesProducts();					//Возвращаем все имена прдуктов
+	String^ GetPrisePerMinute();					//возвращает цену одной минуты
 	/*поиск*/
 	Dictionary<String^, int>^ SearchProduct(String^ name);		//поиск продукта по имени
 	/*изменить цену продукта*/
 	bool ChangePrise(String^ name_product, int new_prise);		//изменить цену данного продукта
-	void ChangePriceMin(String^);
+	bool ChangePrise(String^ name_product, String^ new_prise);
+	void ChangePriceMin(String^);					//изменить цену минуты в кафе
 	/*удалить продукт*/
 	bool RemoveProduct(String^ name_product);			//удалить тавар
 private:

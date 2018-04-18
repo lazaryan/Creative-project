@@ -51,6 +51,12 @@
     <ClCompile Include="ChangePrisePerMinute.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
+    <ClCompile Include="RemoveProduct.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangePriseProduct.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -95,6 +101,12 @@
     <ClInclude Include="ChangePrisePerMinute.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
+    <ClInclude Include="RemoveProduct.h">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangePriseProduct.h">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
@@ -115,9 +127,17 @@
     <EmbeddedResource Include="ChangePrisePerMinute.resx">
       <Filter>Файлы ресурсов</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddProductInMenu.resx">
+      <Filter>Файлы ресурсов</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoveProduct.resx">
+      <Filter>Файлы ресурсов</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePriseProduct.resx">
+      <Filter>Файлы ресурсов</Filter>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\visits.txt" />
     <Text Include="Data\prise.txt" />
     <Text Include="Data\prise_per_minute.txt" />
   </ItemGroup>

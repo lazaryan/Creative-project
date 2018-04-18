@@ -1,5 +1,8 @@
 #pragma once
-#include "ChangePrisePerMinute.h"
+#include "ChangePrisePerMinute.h"		//изменение цены минуты в зале
+#include "AddProductInMenu.h"			//ƒобавить новый продкуты
+#include "RemoveProduct.h"			//удалить продукт
+#include "ChangePriseProduct.h"			//»зменить цену товара
 
 namespace SystemforTimecoffe {
 
@@ -90,6 +93,7 @@ namespace SystemforTimecoffe {
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"»зменить цену товара";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &Setting::button2_Click);
 			// 
 			// button3
 			// 
@@ -127,7 +131,7 @@ namespace SystemforTimecoffe {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 311);
+			this->ClientSize = System::Drawing::Size(251, 281);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
@@ -144,8 +148,19 @@ namespace SystemforTimecoffe {
 		price_min->ShowDialog();
 	}
 private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+	AddProductInMenu^ add = gcnew AddProductInMenu();
+
+	add->ShowDialog();
 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+	RemoveProduct^ remove = gcnew RemoveProduct();
+
+	remove->ShowDialog();
+}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	ChangePriseProduct^ change = gcnew ChangePriseProduct();
+
+	change->ShowDialog();
 }
 };
 }

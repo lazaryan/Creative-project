@@ -39,6 +39,8 @@ namespace SystemforTimecoffe {
 	protected:
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::ComboBox^  comboBox1;
 
 	private:
 		/// <summary>
@@ -56,6 +58,8 @@ namespace SystemforTimecoffe {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -73,10 +77,11 @@ namespace SystemforTimecoffe {
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(52, 107);
+			this->textBox1->Location = System::Drawing::Point(52, 79);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(396, 22);
 			this->textBox1->TabIndex = 2;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &AddVisits::textBox1_TextChanged);
 			// 
 			// button1
 			// 
@@ -94,30 +99,66 @@ namespace SystemforTimecoffe {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &AddVisits::button1_Click);
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(180, 113);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(128, 20);
+			this->label2->TabIndex = 4;
+			this->label2->Text = L"Выберите Стол";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(52, 147);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(396, 21);
+			this->comboBox1->TabIndex = 5;
+			// 
 			// AddVisits
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(484, 261);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Name = L"AddVisits";
 			this->Text = L"AddVisits";
+			this->Load += gcnew System::EventHandler(this, &AddVisits::AddVisits_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {	//обработка клика
 		Visits^ add_pos = gcnew Visits();
 
-		String^ name = textBox1->Text;		//получаем имя
-		add_pos->SetName(name);			//вносим имя
-		add_pos->SetDateSystem();		//получаемм системное время
+		if (textBox1->Text != nullptr && textBox1->Text->Length != 0) {			//если введено имя
+			String^ name = textBox1->Text;						//считываем имя
+			add_pos->SetName(name);							//заносим имя
+			add_pos->SetDateSystem();						//получаем системное время
 
-		add_pos->RecordVisits();		//заливаем данные в файл
-		Close();				//закрываем форму
+			add_pos->RecordVisits();						//записываем в файл
+		}
+
+		Close();				
 	}
-	};
+	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (this->textBox1->Text == nullptr ||
+			textBox1->Text->Length == 0 ||
+			textBox1->Text->Length > 50)
+			this->button1->Enabled = false;
+		else
+			this->button1->Enabled = true;
+	}
+	private: System::Void AddVisits_Load(System::Object^  sender, System::EventArgs^  e) {
+		this->button1->Enabled = false;
+	}
+};
 }

@@ -17,4 +17,15 @@ ref struct Date {
 	int seconds;
 };
 
+//посетитель
+ref struct Visitor {
+	Visitor();
+	Visitor(String^ name);
+	Visitor(Date^ date);
+	Visitor(String^ name, Date^ date);
+
+	String^ Name;
+	Date^ TimeStart;
+};
+
 #endif
