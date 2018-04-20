@@ -1,6 +1,0 @@
-as;5:25:59;asd1, asd2, asd3, a
-aswed;5:25:59;asd1, asd2, asd3, a
-aswqd;5:25:59;asd1, asd2, asd3, a
-aswd;5:25:59;asd1, asd2, asd3, a
-ased;5:25:59;asd1, asd2, asd3, a
-ased;5:25:59;asd1, asd2, asd3, a
