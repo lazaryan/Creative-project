@@ -1,0 +1,21 @@
+﻿  AddProductInMenu.cpp
+  AddVisits.cpp
+  ChangePrisePerMinute.cpp
+  ChangePriseProduct.cpp
+  MainForm.cpp
+c:\users\родион\documents\курс1_семестр2\стельмах\creative-project\system_for_undeground\system_for_time_coffe\mainform.h(657): warning C4101: count: неиспользованная локальная переменная
+c:\users\родион\documents\курс1_семестр2\стельмах\creative-project\system_for_undeground\system_for_time_coffe\mainform.cpp(7): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+  PriseList.cpp
+  PrivateMethods.cpp
+  RemoveProduct.cpp
+  RemoveVisits.cpp
+  ResultPrise.cpp
+  RuList.cpp
+  Setting.cpp
+  Structs.cpp
+  Visits.cpp
+  Создание кода...
+c:\users\родион\documents\курс1_семестр2\стельмах\creative-project\system_for_undeground\system_for_time_coffe\rulist.cpp(226): warning C4715: RuList::Re_CreateFile: значение возвращается не при всех путях выполнения
+c:\users\родион\documents\курс1_семестр2\стельмах\creative-project\system_for_undeground\system_for_time_coffe\privatemethods.cpp(234): warning C4700: использована неинициализированная локальная переменная "poz"
+c:\users\родион\documents\курс1_семестр2\стельмах\creative-project\system_for_undeground\system_for_time_coffe\priselist.cpp(196): warning C4715: PriseList::Re_CreateFile: значение возвращается не при всех путях выполнения
+  System_for_Time_coffe.vcxproj -> C:\Users\Родион\Documents\Курс1_Семестр2\Стельмах\Creative-project\System_for_Undeground\x64\Debug\System_for_Time_coffe.exe
