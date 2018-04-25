@@ -102,7 +102,7 @@ namespace SystemforTimecoffe {
 			// 
 			this->listBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
 				static_cast<System::Int32>(static_cast<System::Byte>(189)));
-			this->listBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->listBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->listBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->listBox1->ForeColor = System::Drawing::Color::White;
@@ -110,7 +110,7 @@ namespace SystemforTimecoffe {
 			this->listBox1->ItemHeight = 20;
 			this->listBox1->Location = System::Drawing::Point(17, 79);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(316, 380);
+			this->listBox1->Size = System::Drawing::Size(316, 362);
 			this->listBox1->TabIndex = 3;
 			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &RemoveProduct::listBox1_SelectedIndexChanged);
 			// 

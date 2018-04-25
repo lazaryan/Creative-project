@@ -153,6 +153,20 @@ bool Visits::RecordVisits() {
 	return true;
 }
 
+bool Visits::RecordVisits(int n) {
+	OpenFile(SOURCE_FILE_VISITS_LIST);
+
+	File_w->Write("{0};", n);
+	File_w->Write("{0};", Name);
+	File_w->WriteLine("{0}:{1}:{2}", TimeStart->house,
+		TimeStart->minutes,
+		TimeStart->seconds);
+
+	CloseFile();
+
+	return true;
+}
+
 /*
 //////////////////////////////////////////////////////////////////////////////
 

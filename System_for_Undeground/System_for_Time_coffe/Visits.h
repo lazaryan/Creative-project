@@ -44,6 +44,7 @@ public:
 
 	/*внесение посетителя в файл*/
 	bool RecordVisits();//имя;время
+	bool RecordVisits(int number_table);//номер стола;имя;время
 private:
 	String	 ^ Name;			//имя посетителя
 	Date     ^ TimeStart;			//время начала
