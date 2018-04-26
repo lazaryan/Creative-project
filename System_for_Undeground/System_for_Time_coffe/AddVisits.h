@@ -200,10 +200,12 @@ namespace SystemforTimecoffe {
 
 		if (textBox1->Text != nullptr && textBox1->Text->Length != 0) {			//если введено имя
 			String^ name = textBox1->Text;						//считываем имя
+			int count = (int)numericUpDown1->Value;						//считываем, сколько сидит посетитель
+
 			add_pos->SetName(name);							//заносим имя
 			add_pos->SetDateSystem();						//получаем системное время
 
-			add_pos->RecordVisits(Table);						//записываем в файл
+			add_pos->RecordVisits(Table, count);						//записываем в файл
 		}
 
 		Close();				

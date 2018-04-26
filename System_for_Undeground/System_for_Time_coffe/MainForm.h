@@ -8,6 +8,7 @@
 /*классы*/
 #include "PrivateMethods.h"
 #include "PriseList.h"
+#include "MyConst.h"
 #include "RuList.h"
 
 namespace SystemforTimecoffe {
@@ -829,6 +830,35 @@ namespace SystemforTimecoffe {
 		this->dataGridView1->Rows->Clear();
 		FillListProduct();
 	}
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->button2->Visible = false;
+		this->button2->Enabled = false;
+
+		this->textBox1->Text = L"Занято!";
+		this->textBox2->Text = "00:00:00";
+
+		AddVisits^ vis = gcnew AddVisits(1);
+		vis->ShowDialog();
+
+		this -> textBox1->Text = ListVisits->GetNameInTable(1);
+
+		TimeS1 = 0;
+		this->timer1->Interval = 1000;
+		this->timer1->Start();
+	}
+	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
+		TimeS1++;
+		int ost_t = 3600 - TimeS1;
+		if (ost_t != 0) {
+			Date^ d = gcnew Date(ost_t / 3600, ost_t / 60, ost_t % 60);
+			this->textBox2->Text = d->house + ":" + d->minutes + ":" + d->seconds;
+		}
+		else {
+			this->textBox2->Text = "00:00:00";
+			TimeS1 = 0;
+			this->timer1->Stop();
+		}
+	}
 
 	private: void FillListProduct() {
 		ListProducts->SetListPrises();
@@ -846,31 +876,6 @@ namespace SystemforTimecoffe {
 
 		this->label5->Text = prise_min + "";
 
-	}
-	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->button2->Visible = false;
-		this->button2->Enabled = false;
-
-		AddVisits^ vis = gcnew AddVisits(1);
-		vis->ShowDialog();
-
-		TimeS1 = 0;
-		this->textBox1->Text = L"Занято!";
-		this->timer1->Interval = 1000;
-		this->timer1->Start();
-	}
-	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
-		TimeS1++;
-		int ost_t = 3600 - TimeS1;
-		if (ost_t != 0) {
-			Date^ d = gcnew Date(ost_t / 3600, ost_t / 60, ost_t % 60);
-			this->textBox2->Text = d->house + ":" + d->minutes + ":" + d->seconds;
-		}
-		else {
-			this->textBox2->Text = "00:00:00";
-			TimeS1 = 0;
-			this->timer1->Stop();
-		}
 	}
 };
 }

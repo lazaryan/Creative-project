@@ -33,6 +33,7 @@ public:
 
 	bool RemoveVisit(String^ name);					//убрать посетителя из файла
 	bool RemoveVisit(int count);
+	String^ GetNameInTable(int nimber);				//Получить имя поетителя за столом
 
 	bool SetPrisePerMinute();					//получаем, сколько стоит одна минута
 
