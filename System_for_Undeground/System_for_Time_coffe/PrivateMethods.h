@@ -26,6 +26,7 @@ protected:
 	/*работа со строками*/
 
 	String^ GetReverseString(String^ str);			//получение обратной строки
+	int PosFinishSumbol(String^ s, char symboll);		//поиск номера символа с конца
 
 	ArrayList^ SortingListString(ArrayList^ list);		//сортировка списка строк(пузырьковая)
 

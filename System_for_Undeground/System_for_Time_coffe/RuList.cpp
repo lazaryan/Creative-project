@@ -105,6 +105,45 @@ int RuList::GetPrisePerMinute() {
 	return PriseMinutes;
 }
 
+String^ RuList::GetNameInTable(int number) {
+	String^ s;
+	OpenFile(SOURCE_FILE_VISITS_LIST, Reader);
+
+	while (!File_r->EndOfStream) {
+		s = File_r->ReadLine();
+		int n = PosSumbol(s, ';');
+		if (number == GetNumber(GetString(s, 0, n))) {
+			s = GetString(s, n + 1, s->Length);
+			n = PosSumbol(s, ';');
+			s = GetString(s, 0, n);
+			break;
+		}
+	}
+
+
+	CloseFile(Reader);
+	return s;
+}
+
+int RuList::GetTimeInTable(int number) {
+	String^ s;
+	OpenFile(SOURCE_FILE_VISITS_LIST, Reader);
+
+	while (!File_r->EndOfStream) {
+		s = File_r->ReadLine();
+		int n = PosSumbol(s, ';');
+
+		if (number == GetNumber(GetString(s, 0, n))) {
+			n = PosFinishSumbol(s, ';');
+			s = GetString(s, n + 1, s->Length);
+			break;
+		}
+	}
+
+	CloseFile(Reader);
+	return GetNumber(s);
+}
+
 /*
 /////////////////////////////////////////////////////////////////////////////////////
 

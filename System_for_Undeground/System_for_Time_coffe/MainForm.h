@@ -8,6 +8,7 @@
 /*классы*/
 #include "PrivateMethods.h"
 #include "PriseList.h"
+#include "MyConst.h"
 #include "RuList.h"
 
 namespace SystemforTimecoffe {
@@ -33,7 +34,8 @@ namespace SystemforTimecoffe {
 			MyMethods	= gcnew PrivateMethods();
 			ListProducts	= gcnew PriseList();
 
-			TimeS1 = 0;
+			TimeS1		= 0;
+			CountHour1	= 1;
 		}
 
 	protected:
@@ -56,8 +58,6 @@ namespace SystemforTimecoffe {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-
-
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  label6;
@@ -82,18 +82,25 @@ namespace SystemforTimecoffe {
 	private: System::Windows::Forms::Label^  label14;
 	private: System::Windows::Forms::TextBox^  textBox6;
 	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button5;
-	private: System::Windows::Forms::Button^  button6;
-	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Timer^  timer1;
+	private: System::Windows::Forms::Button^  button7;
+	private: System::Windows::Forms::Button^  button8;
+	private: System::Windows::Forms::Button^  button5;
+	private: System::Windows::Forms::Button^  button10;
+	private: System::Windows::Forms::Button^  button9;
+	private: System::Windows::Forms::Button^  button6;
+	private: System::Windows::Forms::Button^  button13;
+	private: System::Windows::Forms::Button^  button11;
+	private: System::Windows::Forms::Button^  button4;
+	private: System::Windows::Forms::Button^  button14;
+	private: System::Windows::Forms::Button^  button12;
+	private: System::ComponentModel::IContainer^  components;
+
 	private: RuList ^ ListVisits;
 	private: PrivateMethods ^ MyMethods;
 	private: PriseList ^ ListProducts;
 	private: int TimeS1;
-	private: System::Windows::Forms::Button^  button7;
-	private: System::Windows::Forms::Button^  button8;
-
-	private: System::ComponentModel::IContainer^  components;
+	private: int CountHour1;
 
 	private:
 		/// <summary>
@@ -109,6 +116,10 @@ namespace SystemforTimecoffe {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -129,18 +140,24 @@ namespace SystemforTimecoffe {
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button10 = (gcnew System::Windows::Forms::Button());
+			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->button13 = (gcnew System::Windows::Forms::Button());
+			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button14 = (gcnew System::Windows::Forms::Button());
+			this->button12 = (gcnew System::Windows::Forms::Button());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label14 = (gcnew System::Windows::Forms::Label());
@@ -193,8 +210,27 @@ namespace SystemforTimecoffe {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::White;
+			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
 				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Bold));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
 				this->Column1,
@@ -210,12 +246,30 @@ namespace SystemforTimecoffe {
 			// 
 			// Column1
 			// 
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::White;
+			this->Column1->DefaultCellStyle = dataGridViewCellStyle3;
 			this->Column1->HeaderText = L"Наименование";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
 			// 
 			// Column2
 			// 
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::White;
+			this->Column2->DefaultCellStyle = dataGridViewCellStyle4;
 			this->Column2->HeaderText = L"Цена";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
@@ -379,11 +433,14 @@ namespace SystemforTimecoffe {
 			this->button7->TabIndex = 37;
 			this->button7->Text = L"Убрать";
 			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &MainForm::button7_Click);
 			// 
 			// groupBox2
 			// 
 			this->groupBox2->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox2->Controls->Add(this->button5);
+			this->groupBox2->Controls->Add(this->button10);
+			this->groupBox2->Controls->Add(this->button9);
 			this->groupBox2->Controls->Add(this->label7);
 			this->groupBox2->Controls->Add(this->textBox9);
 			this->groupBox2->Controls->Add(this->label12);
@@ -393,7 +450,7 @@ namespace SystemforTimecoffe {
 			this->groupBox2->ForeColor = System::Drawing::Color::White;
 			this->groupBox2->Location = System::Drawing::Point(280, 121);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(221, 79);
+			this->groupBox2->Size = System::Drawing::Size(221, 114);
 			this->groupBox2->TabIndex = 33;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Стол №2";
@@ -405,12 +462,42 @@ namespace SystemforTimecoffe {
 			this->button5->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
 				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
 			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button5->Location = System::Drawing::Point(-13, 0);
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Bold));
+			this->button5->ForeColor = System::Drawing::Color::White;
+			this->button5->Location = System::Drawing::Point(0, 0);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(248, 79);
-			this->button5->TabIndex = 37;
+			this->button5->Size = System::Drawing::Size(221, 114);
+			this->button5->TabIndex = 38;
 			this->button5->Text = L"Стол №2";
 			this->button5->UseVisualStyleBackColor = false;
+			// 
+			// button10
+			// 
+			this->button10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button10->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button10->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button10->Location = System::Drawing::Point(116, 72);
+			this->button10->Name = L"button10";
+			this->button10->Size = System::Drawing::Size(99, 36);
+			this->button10->TabIndex = 39;
+			this->button10->Text = L"Продлить";
+			this->button10->UseVisualStyleBackColor = false;
+			// 
+			// button9
+			// 
+			this->button9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button9->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button9->Location = System::Drawing::Point(6, 72);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(100, 36);
+			this->button9->TabIndex = 38;
+			this->button9->Text = L"Убрать";
+			this->button9->UseVisualStyleBackColor = false;
 			// 
 			// label7
 			// 
@@ -460,6 +547,8 @@ namespace SystemforTimecoffe {
 			// 
 			this->groupBox3->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox3->Controls->Add(this->button6);
+			this->groupBox3->Controls->Add(this->button13);
+			this->groupBox3->Controls->Add(this->button11);
 			this->groupBox3->Controls->Add(this->label10);
 			this->groupBox3->Controls->Add(this->textBox3);
 			this->groupBox3->Controls->Add(this->label11);
@@ -467,9 +556,9 @@ namespace SystemforTimecoffe {
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox3->ForeColor = System::Drawing::Color::White;
-			this->groupBox3->Location = System::Drawing::Point(24, 256);
+			this->groupBox3->Location = System::Drawing::Point(24, 265);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(221, 79);
+			this->groupBox3->Size = System::Drawing::Size(221, 114);
 			this->groupBox3->TabIndex = 34;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Стол №3";
@@ -481,12 +570,42 @@ namespace SystemforTimecoffe {
 			this->button6->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
 				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
 			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button6->Location = System::Drawing::Point(0, 1);
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Bold));
+			this->button6->ForeColor = System::Drawing::Color::White;
+			this->button6->Location = System::Drawing::Point(0, 0);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(234, 79);
-			this->button6->TabIndex = 37;
+			this->button6->Size = System::Drawing::Size(221, 114);
+			this->button6->TabIndex = 38;
 			this->button6->Text = L"Стол №3";
 			this->button6->UseVisualStyleBackColor = false;
+			// 
+			// button13
+			// 
+			this->button13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button13->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button13->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button13->Location = System::Drawing::Point(116, 72);
+			this->button13->Name = L"button13";
+			this->button13->Size = System::Drawing::Size(99, 36);
+			this->button13->TabIndex = 39;
+			this->button13->Text = L"Продлить";
+			this->button13->UseVisualStyleBackColor = false;
+			// 
+			// button11
+			// 
+			this->button11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button11->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button11->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button11->Location = System::Drawing::Point(6, 72);
+			this->button11->Name = L"button11";
+			this->button11->Size = System::Drawing::Size(100, 36);
+			this->button11->TabIndex = 38;
+			this->button11->Text = L"Убрать";
+			this->button11->UseVisualStyleBackColor = false;
 			// 
 			// label10
 			// 
@@ -536,6 +655,8 @@ namespace SystemforTimecoffe {
 			// 
 			this->groupBox4->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox4->Controls->Add(this->button4);
+			this->groupBox4->Controls->Add(this->button14);
+			this->groupBox4->Controls->Add(this->button12);
 			this->groupBox4->Controls->Add(this->label13);
 			this->groupBox4->Controls->Add(this->textBox5);
 			this->groupBox4->Controls->Add(this->label14);
@@ -543,9 +664,9 @@ namespace SystemforTimecoffe {
 			this->groupBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox4->ForeColor = System::Drawing::Color::White;
-			this->groupBox4->Location = System::Drawing::Point(280, 256);
+			this->groupBox4->Location = System::Drawing::Point(280, 265);
 			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(221, 79);
+			this->groupBox4->Size = System::Drawing::Size(221, 114);
 			this->groupBox4->TabIndex = 35;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Стол №4";
@@ -557,12 +678,42 @@ namespace SystemforTimecoffe {
 			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
 				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button4->Location = System::Drawing::Point(-13, 1);
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Bold));
+			this->button4->ForeColor = System::Drawing::Color::White;
+			this->button4->Location = System::Drawing::Point(0, 0);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(248, 79);
-			this->button4->TabIndex = 37;
+			this->button4->Size = System::Drawing::Size(221, 114);
+			this->button4->TabIndex = 41;
 			this->button4->Text = L"Стол №4";
 			this->button4->UseVisualStyleBackColor = false;
+			// 
+			// button14
+			// 
+			this->button14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button14->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button14->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button14->Location = System::Drawing::Point(116, 72);
+			this->button14->Name = L"button14";
+			this->button14->Size = System::Drawing::Size(99, 36);
+			this->button14->TabIndex = 40;
+			this->button14->Text = L"Продлить";
+			this->button14->UseVisualStyleBackColor = false;
+			// 
+			// button12
+			// 
+			this->button12->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button12->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->button12->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button12->Location = System::Drawing::Point(6, 72);
+			this->button12->Name = L"button12";
+			this->button12->Size = System::Drawing::Size(100, 36);
+			this->button12->TabIndex = 39;
+			this->button12->Text = L"Убрать";
+			this->button12->UseVisualStyleBackColor = false;
 			// 
 			// label13
 			// 
@@ -657,18 +808,10 @@ namespace SystemforTimecoffe {
 
 		ListVisits->DeleteOldFile();							//удаляем старый буферный файл
 
-		ListVisits->SetPrisePerMinute();						//загружаем в программу цену 1 минуты
+		ListVisits->SetPrisePerMinute();						//загружаем в программу цену 1 часа
 		FillListProduct();								//загружаем список товаров и их цены
 		this->button2->BringToFront();
 		this->groupBox1->SendToBack();
-		this->textBox1->Text = L"Свободно!";
-		this->textBox2->Text = "00:00:00";
-		this->textBox3->Text = L"Свободно!";
-		this->textBox4->Text = "00:00:00";
-		this->textBox5->Text = L"Свободно!";
-		this->textBox6->Text = "00:00:00";
-		this->textBox9->Text = L"Свободно!";
-		this->textBox10->Text = "00:00:00";
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		AddVisits^ new_vis = gcnew AddVisits();
@@ -684,6 +827,70 @@ namespace SystemforTimecoffe {
 
 		this->dataGridView1->Rows->Clear();
 		FillListProduct();
+	}
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->button2->Visible = false;
+		this->button2->Enabled = false;
+
+		this->textBox1->Text = L"Занято!";
+		this->textBox2->Text = "00:00:00";
+
+		AddVisits^ vis = gcnew AddVisits(1);
+		vis->ShowDialog();
+
+		if (ListVisits->GetNameInTable(1)) {
+			this->textBox1->Text = ListVisits->GetNameInTable(1);
+			CountHour1 = ListVisits->GetTimeInTable(1);
+
+			TimeS1 = 0;
+			this->timer1->Interval = 1000;
+			this->timer1->Start();
+		}
+		else {
+			this->button2->Visible = true;
+			this->button2->Enabled = true;
+		}
+	}
+	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->timer1->Stop();
+		int prise = CountHour1 * ListVisits->GetPrisePerMinute();
+
+		this->textBox1->Text = L"Занято!";
+		this->textBox2->Text = "00:00:00";
+
+		CountHour1 = 1;
+		TimeS1 = 0;
+
+		this->button2->Visible = true;
+		this->button2->Enabled = true;
+
+		ResultPrise^ res = gcnew ResultPrise(prise);
+		res->ShowDialog();
+	}
+	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
+		TimeS1++;
+		int ost_t = (3600 * CountHour1) - TimeS1;
+		if (ost_t > 1) {
+			Date^ d = gcnew Date(ost_t / 3600, ost_t / (60 * CountHour1), ost_t % 60);
+			this->textBox2->Text = d->house + ":" + d->minutes + ":" + d->seconds;
+		}
+		else {
+			int prise = CountHour1 * ListVisits->GetPrisePerMinute();
+
+			this->textBox1->Text = L"Занято!";
+			this->textBox2->Text = "00:00:00";
+
+			TimeS1 = 0;
+			CountHour1 = 1;
+
+			this->timer1->Stop();
+
+			this->button2->Visible = true;
+			this->button2->Enabled = true;
+
+			ResultPrise^ res = gcnew ResultPrise(prise);
+			res->ShowDialog();
+		}
 	}
 
 	private: void FillListProduct() {
@@ -702,30 +909,6 @@ namespace SystemforTimecoffe {
 
 		this->label5->Text = prise_min + "";
 
-	}
-	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->button2->Visible = false;
-		this->button2->Enabled = false;
-
-		this->groupBox1->BringToFront();
-		this->button2->SendToBack();
-		TimeS1 = 0;
-		this->textBox1->Text = L"Занято!";
-		this->timer1->Interval = 1000;
-		this->timer1->Start();
-	}
-	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
-		TimeS1++;
-		int ost_t = 3600 - TimeS1;
-		if (ost_t != 0) {
-			Date^ d = gcnew Date(ost_t / 3600, ost_t / 60, ost_t % 60);
-			this->textBox2->Text = d->house + ":" + d->minutes + ":" + d->seconds;
-		}
-		else {
-			this->textBox2->Text = "00:00:00";
-			TimeS1 = 0;
-			this->timer1->Stop();
-		}
 	}
 };
 }

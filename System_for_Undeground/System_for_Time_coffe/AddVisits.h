@@ -19,9 +19,12 @@ namespace SystemforTimecoffe {
 		AddVisits(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+		}
+
+		AddVisits(int number_table) {
+			InitializeComponent();
+
+			Table = number_table;
 		}
 
 	protected:
@@ -40,7 +43,11 @@ namespace SystemforTimecoffe {
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::ComboBox^  comboBox1;
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
+	private: int Table;
+
 
 	private:
 		/// <summary>
@@ -60,7 +67,10 @@ namespace SystemforTimecoffe {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -68,7 +78,7 @@ namespace SystemforTimecoffe {
 			this->label1->BackColor = System::Drawing::Color::Transparent;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
 			this->label1->ForeColor = System::Drawing::Color::White;
-			this->label1->Location = System::Drawing::Point(48, 20);
+			this->label1->Location = System::Drawing::Point(48, 9);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(400, 30);
 			this->label1->TabIndex = 1;
@@ -83,10 +93,10 @@ namespace SystemforTimecoffe {
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->textBox1->ForeColor = System::Drawing::Color::White;
-			this->textBox1->Location = System::Drawing::Point(52, 53);
+			this->textBox1->Location = System::Drawing::Point(36, 42);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(396, 27);
+			this->textBox1->Size = System::Drawing::Size(412, 27);
 			this->textBox1->TabIndex = 2;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &AddVisits::textBox1_TextChanged);
 			// 
@@ -100,7 +110,7 @@ namespace SystemforTimecoffe {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::SystemColors::Window;
-			this->button1->Location = System::Drawing::Point(184, 187);
+			this->button1->Location = System::Drawing::Point(352, 184);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(120, 50);
 			this->button1->TabIndex = 3;
@@ -110,27 +120,56 @@ namespace SystemforTimecoffe {
 			// 
 			// label2
 			// 
-			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::Transparent;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(180, 102);
+			this->label2->Location = System::Drawing::Point(48, 86);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(141, 20);
+			this->label2->Size = System::Drawing::Size(400, 30);
 			this->label2->TabIndex = 4;
-			this->label2->Text = L"Выберите Стол";
+			this->label2->Text = L"Введите номер телефона";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// comboBox1
+			// textBox2
 			// 
-			this->comboBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+			this->textBox2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
 				static_cast<System::Int32>(static_cast<System::Byte>(189)));
-			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox2->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(52, 138);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(396, 28);
-			this->comboBox1->TabIndex = 5;
+			this->textBox2->ForeColor = System::Drawing::Color::White;
+			this->textBox2->Location = System::Drawing::Point(36, 119);
+			this->textBox2->Multiline = true;
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(412, 27);
+			this->textBox2->TabIndex = 5;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &AddVisits::textBox2_TextChanged);
+			// 
+			// label3
+			// 
+			this->label3->BackColor = System::Drawing::Color::Transparent;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
+			this->label3->ForeColor = System::Drawing::Color::White;
+			this->label3->Location = System::Drawing::Point(22, 179);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(194, 60);
+			this->label3->TabIndex = 6;
+			this->label3->Text = L"Введите количество часов";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// numericUpDown1
+			// 
+			this->numericUpDown1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(72)),
+				static_cast<System::Int32>(static_cast<System::Byte>(189)));
+			this->numericUpDown1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->numericUpDown1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->numericUpDown1->ForeColor = System::Drawing::Color::White;
+			this->numericUpDown1->Location = System::Drawing::Point(239, 197);
+			this->numericUpDown1->Name = L"numericUpDown1";
+			this->numericUpDown1->Size = System::Drawing::Size(79, 26);
+			this->numericUpDown1->TabIndex = 7;
+			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			// 
 			// AddVisits
 			// 
@@ -140,7 +179,9 @@ namespace SystemforTimecoffe {
 				static_cast<System::Int32>(static_cast<System::Byte>(189)));
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(484, 261);
-			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->numericUpDown1);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
@@ -148,6 +189,7 @@ namespace SystemforTimecoffe {
 			this->Name = L"AddVisits";
 			this->Text = L"AddVisits";
 			this->Load += gcnew System::EventHandler(this, &AddVisits::AddVisits_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -158,24 +200,46 @@ namespace SystemforTimecoffe {
 
 		if (textBox1->Text != nullptr && textBox1->Text->Length != 0) {			//если введено имя
 			String^ name = textBox1->Text;						//считываем имя
+			int count = (int)numericUpDown1->Value;						//считываем, сколько сидит посетитель
+
 			add_pos->SetName(name);							//заносим имя
 			add_pos->SetDateSystem();						//получаем системное время
 
-			add_pos->RecordVisits();						//записываем в файл
+			add_pos->RecordVisits(Table, count);						//записываем в файл
 		}
 
 		Close();				
 	}
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		if (this->textBox1->Text == nullptr ||
-			textBox1->Text->Length == 0 ||
-			textBox1->Text->Length > 50)
+		if (this->textBox1->Text == nullptr || textBox1->Text->Length == 0 || textBox1->Text->Length > 50 ||
+			this->textBox2->Text == nullptr || textBox2->Text->Length == 0 || textBox2->Text->Length > 25)
 			this->button1->Enabled = false;
 		else
 			this->button1->Enabled = true;
 	}
 	private: System::Void AddVisits_Load(System::Object^  sender, System::EventArgs^  e) {
 		this->button1->Enabled = false;
+	}
+	private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		String^ s = this->textBox2->Text;
+		int a = true;
+
+		if (this->textBox1->Text == nullptr || textBox1->Text->Length == 0 || textBox1->Text->Length > 50 ||
+			this->textBox2->Text == nullptr || textBox2->Text->Length == 0 || textBox2->Text->Length > 25)
+			a = false;
+		else
+			for each(char c in s) {
+				if (!(c == ' ' || c == '-' || c == '(' || c == ')' || c == '+' ||
+					(c >= '0' && c <= '9'))) {
+					a = false;
+					break;
+				}
+			}
+
+		if (a)
+			this->button1->Enabled = true;
+		else
+			this->button1->Enabled = false;
 	}
 };
 }

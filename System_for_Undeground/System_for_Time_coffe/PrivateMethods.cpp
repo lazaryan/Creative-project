@@ -78,6 +78,17 @@ int PrivateMethods::PosSumbol(String^ text, char sumbol) {
 	return -1;
 }
 
+int PrivateMethods::PosFinishSumbol(String^ s, char symboll) {
+	int length = s->Length;
+
+	for (int i = length - 1; i >= 0; i--) {
+		if (s[i] == symboll)
+			return i;
+	}
+
+	return -1;
+}
+
 String^ PrivateMethods::GetString(String^ text, int pos1, int pos2) {
 	if (text == nullptr || pos1 < 0 || pos2 > text->Length)//nullptr - это означает, что строка пустая
 		return "";

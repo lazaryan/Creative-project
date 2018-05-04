@@ -28,6 +28,12 @@ namespace SystemforTimecoffe {
 			this->label2->Text = prise;
 		}
 
+		ResultPrise(int prise) {
+			InitializeComponent();
+
+			this->label2->Text = prise + "";
+		}
+
 	protected:
 		/// <summary>
 		/// Освободить все используемые ресурсы.
@@ -87,6 +93,7 @@ namespace SystemforTimecoffe {
 			this->label2->Size = System::Drawing::Size(126, 40);
 			this->label2->TabIndex = 1;
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->label2->Click += gcnew System::EventHandler(this, &ResultPrise::label2_Click);
 			// 
 			// label3
 			// 
@@ -121,5 +128,7 @@ namespace SystemforTimecoffe {
 #pragma endregion
 	private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	};
+	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+};
 }
